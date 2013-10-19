@@ -28,12 +28,12 @@ class Facebook
     @graph.put_comment(id, message)
   end
 
-  def wall(id)
-    @graph.get_connection(id, "feed")
+  def wall
+    @graph.get_connection("me", "home")
   end
 
-  def wall_since(friend_id, since)
-    @graph.fql_query("SELECT post_id, actor_id FROM stream WHERE created_time > #{since} AND filter_key in (SELECT filter_key FROM stream_filter WHERE uid=me())")
+  def wall_with_limit limit
+    @graph.get_connection("me", "home?limit=#{limit}")
   end
 
   def picture(id)
