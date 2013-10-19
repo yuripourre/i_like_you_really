@@ -19,3 +19,4 @@
 .vagrant/
 *.box
 .env
+database.yml
