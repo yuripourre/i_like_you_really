@@ -15,6 +15,7 @@
 @import "twitter/bootstrap";
 @import "social_buttons";
 @import "font-awesome";
+@import "mobile";
 
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro);
 
@@ -22,62 +23,87 @@ $navbar-height: 70px;
 $default-border-bottom: 1px solid rgba(49,78,95,0.12);
 $friend-box-hover-color: #7bdcf5;
 
-.navbar {
-    height: $navbar-height;
-    border-bottom: $default-border-bottom;
-    
-    li > .btn {
-        margin-top: 15px;
-        margin-right: 10px;
-    }
-
-    .navbar-brand {
-        margin-top: 5px;
-        font-size: 1.8em;
-    }
-}
-
 h1, h2, h3, h4, h5, h6 {
     font-family: "Source Sans Pro", "Helvetica Neue", sans;
 }
 
 body {
     font-family: "Source Sans Pro", "Helvetica Neue", sans;
+
+    @media all and (min-width: 641px) {
+        .navbar {
+            min-height: $navbar-height;
+            border-bottom: $default-border-bottom;
+            
+            li > .btn {
+                margin-top: 15px;
+                margin-right: 10px;
+            }
+
+            .navbar-brand {
+                margin-top: 5px;
+                font-size: 1.8em;
+            }
+        }
+    }
 }
 
 body.logged-out {
     .intro {
         background: url(<%= asset_path 'splash/diving.jpg' %>);
-        background-size: 100%;
-        height: 450px;
+        background-size: cover;
         color: white;
+    }
+
+    .tagline {
+        text-shadow: 0.1em 0.0em 0.5em black;
+        margin-top: 120px;
+        font-size: 4.0em;
+        width: 650px;        
     }
 
     .navbar {
         margin-bottom: 0;
     }
 
-    .tagline {
-        margin-top: 120px;
-        font-size: 4.0em;
-        width: 650px;
-        text-shadow: 0.1em 0.0em 0.5em black;
-    }
 
     .news {
         height: 45px;
         border-bottom: $default-border-bottom;
         margin-bottom: 20px;
-
+        line-height: 3em;
+        
         p {
-            line-height: 3em;
+            float: left;
+
+            width: 80%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
+
+        a {
+            margin-left: 5px;
+        }
+    }
+
+    .features {
+        .feature-info {
+            &.col-xs-12 {
+                margin-bottom: 10px;
+            }
+        }
+    }
+
+    .intro {
+        height: 450px;
     }
 }
 
 body.logged-in {
     .friends {
         .friend {
+            float: left;
             margin-bottom: 30px;
 
             > * {
@@ -102,7 +128,6 @@ body.logged-in {
             }
 
             .actions {
-                float: right;
                 font-size: 3em;
                 
                 .check {

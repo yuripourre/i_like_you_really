@@ -1,0 +1,21 @@
+@media 
+(-webkit-min-device-pixel-ratio: 2), 
+(min-resolution: 192dpi) {
+    #body.logged-out {
+    }
+}
+
+
+@media all and (max-width: 640px) {
+    body.logged-out {
+        .intro {
+            height: 300px;
+        }
+        
+        .tagline {
+            margin-top: 50px;
+            font-size: 3.0em;
+            width: 500px;
+        }
+    }
+}
