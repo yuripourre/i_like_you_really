@@ -1,0 +1,37 @@
+<div class="container friends">
+  <div class="page-header">
+    <h1>Friends</h1>  
+  </div>
+
+  <div class="row">
+    <%= render partial: "friend", collection: @friends %>    
+  </div>
+</div>
+
+<script type="text/javascript">
+  var iconClassReverseMap = {
+    "icon-thumbs-up-alt": "icon-thumbs-up",
+    "icon-comments-alt": "icon-comments",
+    "icon-thumbs-up": "icon-thumbs-up-alt",
+    "icon-comments": "icon-comments-alt",
+  };
+  
+  $(".actions .check").click(function() {
+    var el = $(this),
+        relatedToName = $(el).data("checkbox"),
+        checkbox = el.siblings("input[name='" + relatedToName + "']"),
+        newValue = !checkbox.is(":checked");
+
+    for (var iconClass in iconClassReverseMap) {
+      if (el.hasClass(iconClass)) {
+        el.removeClass(iconClass).
+          addClass(iconClassReverseMap[iconClass]);
+
+        break;
+      }
+    }
+
+    console.log(checkbox);
+    checkbox.attr("checked", newValue);
+  });
+</script>

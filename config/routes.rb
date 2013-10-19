@@ -14,4 +14,12 @@ ILikeYouReally::Application.routes.draw do
       post :add_friends
     end
   end
+
+  resources :facebook_guest do
+    collection do
+      get :friends
+      post :add_friends
+    end
+  end
+  
 end

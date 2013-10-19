@@ -1,0 +1,20 @@
+<div class="col-md-3 cols-xs-4 friend">
+  <div class="data">
+    <div class="avatar">
+      <img src="https://graph.facebook.com/<%=friend['id']%>/picture?width=80&height=80">
+    </div>
+  </div>
+
+  <div>
+    <span class="name">
+      <%= friend['name'] %>
+    </span>
+  </div>
+  
+  <div class="actions">
+    <i class="icon-thumbs-up-alt check" data-checkbox="user[friends][<%= friend['id'] %>][like]"></i>
+    <%= check_box_tag "user[friends][#{friend['id']}][like]" %>
+    <i class="icon-comments-alt check" data-checkbox="data-checkbox="user[friends][<%= friend['id'] %>][comments]"></i>
+    <%= check_box_tag "user[friends][#{friend['id']}][comment]" %>
+  </div>
+</div>
