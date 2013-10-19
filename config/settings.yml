@@ -1,0 +1,11 @@
+# settings.yml
+defaults: &defaults
+  preferences:
+    like_interval: 1
+    comment_interval: 1
+
+development:
+  <<: *defaults
+
+test: &testing
+  <<: *defaults
