@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131019070615) do
+ActiveRecord::Schema.define(version: 20131019172457) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "friends", force: true do |t|
     t.integer  "user_id"
-    t.string   "token"
+    t.string   "facebook_id"
     t.boolean  "like"
     t.boolean  "comment"
     t.datetime "created_at"

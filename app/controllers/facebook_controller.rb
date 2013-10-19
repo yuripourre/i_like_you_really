@@ -7,6 +7,7 @@ class FacebookController < ApplicationController
   end
 
   def add_friends
-    FacebookFriends.new(current_user, params).friends_from_hash
+    FacebookFriends.new(current_user, params).save
+    redirect_to root_path
   end
 end

@@ -2,10 +2,12 @@
   <div class="page-header">
     <h1>Friends</h1>  
   </div>
-
+  <%= form_tag(add_friends_facebook_index_path) do %>
   <div class="row">
     <%= render partial: "friend", collection: @friends %>    
   </div>
+  <%= submit_tag "Salvar Amigos" %>
+ <% end %>
 </div>
 
 <script type="text/javascript">
@@ -20,7 +22,7 @@
     var el = $(this),
         relatedToName = $(el).data("checkbox"),
         checkbox = el.siblings("input[name='" + relatedToName + "']"),
-        newValue = !checkbox.is(":checked");
+        newValue = !$(checkbox).is(":checked");
 
     for (var iconClass in iconClassReverseMap) {
       if (el.hasClass(iconClass)) {
@@ -30,8 +32,6 @@
         break;
       }
     }
-
-    console.log(checkbox);
     checkbox.attr("checked", newValue);
   });
 </script>
