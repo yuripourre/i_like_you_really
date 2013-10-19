@@ -8,33 +8,5 @@
       <%= render partial: "friend", object: friend, locals: { current: current} %>    
     <% end %>
   </div>
-  <%= submit_tag "Salvar Amigos" %>
  <% end %>
 </div>
-
-<script type="text/javascript">
-  var iconClassReverseMap = {
-    "icon-thumbs-up-alt": "icon-thumbs-up",
-    "icon-comments-alt": "icon-comments",
-    "icon-thumbs-up": "icon-thumbs-up-alt",
-    "icon-comments": "icon-comments-alt",
-  };
-  
-  $(".actions .check").click(function() {
-    var el = $(this),
-        relatedToName = $(el).data("checkbox"),
-        checkbox = el.siblings("input[name='" + relatedToName + "']"),
-        newValue = !$(checkbox).is(":checked");
-
-    for (var iconClass in iconClassReverseMap) {
-      if (el.hasClass(iconClass)) {
-        el.removeClass(iconClass).
-          addClass(iconClassReverseMap[iconClass]);
-
-        break;
-      }
-    }
-
-    checkbox.prop("checked", newValue);
-  });
-</script>
