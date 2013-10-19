@@ -12,6 +12,8 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'mocha', require: false
+gem "koala", "~> 1.7.0rc1"
+gem 'dotenv-rails', :groups => [:development, :test]
 
 group :development do
   gem 'guard-rspec', require: false
