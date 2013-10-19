@@ -10,6 +10,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'devise'
 gem 'omniauth'
+gem 'pry-debugger'
 gem 'omniauth-facebook'
 gem 'mocha', require: false
 gem "koala", "~> 1.7.0rc1"

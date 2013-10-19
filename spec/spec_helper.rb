@@ -17,6 +17,11 @@ RSpec.configure do |config|
   OmniAuth.config.test_mode = true
 
 
+  config.before(:each, :type => :controller) do
+    request.env["devise.mapping"] = Devise.mappings[:user] 
+    request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:facebook] 
+  end
+
   Capybara.configure do |config|
     config.always_include_port = true
     config.javascript_driver   = :selenium
