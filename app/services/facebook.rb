@@ -14,8 +14,11 @@ class Facebook
     @graph.get_object("me")
   end
 
-  def comment
-    @graph.put_connections("me", "feed", :message => "I am writing on my wall!")
+  def like(id)
+    @graph.put_like(id)
   end
 
+  def comment(id, message)
+    @graph.put_comment(id, message)
+  end
 end
