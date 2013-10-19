@@ -4,12 +4,10 @@ class FacebookGuestController < ApplicationController
     facebook_guest = FacebookGuest.new
     guest_user = facebook_guest.test_users.list[2]#randomize 2
 
-    @friends = Facebook.new(guest_user['access_token']).friends.sort_by { |f|
-      f["name"]
-    }
+    @user = User.where(:uid => guest_user['id']).first # Find the user depending on the params
+    sign_in @user
+
+    redirect_to friends_facebook_index_path
   end
 
-  def add_friends
-    FacebookFriends.new(guest_user, params).friends_from_hash
-  end
 end
