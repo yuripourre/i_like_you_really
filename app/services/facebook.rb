@@ -26,4 +26,8 @@ class Facebook
     @graph.get_connection(id, "feed")
   end
 
+  def wall_since(friend_id, since)
+    @graph.fql_query("SELECT post_id, actor_id FROM stream WHERE created_time > #{since} AND filter_key in (SELECT filter_key FROM stream_filter WHERE uid=me())")
+  end
+
 end
