@@ -9,6 +9,21 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'mocha', require: false
+
+group :development do
+  gem 'guard-rspec', require: false
+end
+
+group :development, :test do
+  gem 'rspec-rails', '~> 2.0'
+end
+
+group :test do
+  gem 'capybara'
+end
 
 group :doc do
   gem 'sdoc', require: false

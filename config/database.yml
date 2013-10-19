@@ -1,6 +1,6 @@
 development:
   adapter: postgresql
-  encoding: unicode
+  encoding: utf-8
   database: development
   pool: 5
   username: postgres 
@@ -10,7 +10,7 @@ development:
 
 test:
   adapter: postgresql
-  encoding: unicode
+  encoding: utf-8
   database: test
   pool: 5
   username: postgres
@@ -20,7 +20,7 @@ test:
 
 production:
   adapter: postgresql
-  encoding: unicode
+  encoding: utf-8
   database: production
   pool: 5
   username: postgres
