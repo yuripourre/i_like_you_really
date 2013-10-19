@@ -7,4 +7,10 @@ ILikeYouReally::Application.routes.draw do
   #end
 
   root to: "main#index"
+
+  resources :facebook do
+    collection do
+      get :friends
+    end
+  end
 end

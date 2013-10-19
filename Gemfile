@@ -23,6 +23,7 @@ group :development do
   gem 'capistrano', '~> 3.0.0'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
+  gem 'pry'
 end
 
 group :development, :test do
@@ -37,6 +38,7 @@ end
 
 group :test do
   gem 'capybara'
+  gem 'selenium-webdriver'
 end
 
 group :doc do

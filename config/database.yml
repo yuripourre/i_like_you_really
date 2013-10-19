@@ -1,0 +1,29 @@
+development:
+  adapter: postgresql
+  encoding: utf-8
+  database: development
+  pool: 5
+  username: postgres 
+  password: rumblelicious
+  host: 10.11.12.13
+  port: 5432
+
+test:
+  adapter: postgresql
+  encoding: utf-8
+  database: test
+  pool: 5
+  username: postgres
+  password: rumblelicious
+  host: 10.11.12.13
+  port: 5432
+
+production:
+  adapter: postgresql
+  encoding: utf-8
+  database: production
+  pool: 5
+  username: postgres
+  password: rumblelicious
+  host: 10.11.12.13
+  port: 5432
