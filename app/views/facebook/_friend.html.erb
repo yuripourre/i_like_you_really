@@ -12,7 +12,9 @@
   </div>
   
   <div class="actions">
-    <i class="icon-thumbs-up-alt check" data-checkbox="foo"></i><%= check_box_tag 'foo' %>
-    <i class="icon-comments-alt check" data-checkbox="bar"></i><%= check_box_tag 'bar' %>
+    <i class="icon-thumbs-up-alt check" data-checkbox="user[friends][<%= friend['id'] %>][like]"></i>
+    <%= check_box_tag "user[friends][#{friend['id']}][like]" %>
+    <i class="icon-comments-alt check" data-checkbox="data-checkbox="user[friends][<%= friend['id'] %>][comments]"></i>
+    <%= check_box_tag "user[friends][#{friend['id']}][comment]" %>
   </div>
 </div>
