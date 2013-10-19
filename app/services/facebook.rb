@@ -21,4 +21,9 @@ class Facebook
   def comment(id, message)
     @graph.put_comment(id, message)
   end
+
+  def wall(id)
+    @graph.get_connection(id, "feed")
+  end
+
 end
