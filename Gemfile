@@ -11,8 +11,11 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'mocha', require: false
-gem "koala", "~> 1.7.0rc1"
+gem 'koala', '~> 1.7.0rc1'
 gem 'puma'
+gem 'anjlab-bootstrap-rails', '~> 3.0.0.0', :require => 'bootstrap-rails'
+gem 'anjlab-widgets', '~> 3.0.0'
+gem 'spinjs-rails'
 
 group :development do
   gem 'guard-rspec', require: false
