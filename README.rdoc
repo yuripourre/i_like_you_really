@@ -1,28 +1,10 @@
-== README
+# Images
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Everything is CC.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+- Driving
+http://www.flickr.com/photos/briangaid/4588346846/sizes/o/in/photostream/
+- Bambi
+http://www.flickr.com/photos/aiphotography/2576206845/sizes/o/in/photolist-4VDJxp-4WQRba-4WUeK9-4XtorH-4XVu4t-4ZELUE-518jKa-52BKkq-53ADMk-56DbTm-56Gz3P-56Gz4r-58CjhC-58LWhv-58N62p-58Scay-58ScNS-59qChX-59Tenh-5cqFmi-5cLY9y-5gnjkw-5hULYB-5hUMgZ-5hZ7WA-5hZ9GY-5mqFg9-5rTi9J-5spJFo-5upaSF-5upiST-5utFCm-5utFZo-5utH4G-5uWPD3-5x6CHR-5y23WW-5zs7Aw-5ChCsr-5CkNt7-5HePWy-5KLntF-5KPLM3-5LA8HE-5Ma9TJ-5N7hV8-5XNHNt-5Yy7kj-5Z9cS6-5ZahKr-5Zeub9/
+- Diving
+http://www.flickr.com/photos/mal-b/6834580442/sizes/o/in/photostream/
