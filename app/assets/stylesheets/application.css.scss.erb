@@ -19,11 +19,20 @@
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro);
 
 $navbar-height: 70px;
+$default_border_bottom: 1px solid rgba(49,78,95,0.12);
 
 .navbar {
+    height: $navbar-height;
+    border-bottom: $default_border_bottom;
+    
     li > .btn {
-        margin-top: 10px;
+        margin-top: 15px;
         margin-right: 10px;
+    }
+
+    .navbar-brand {
+        margin-top: 5px;
+        font-size: 1.8em;
     }
 }
 
@@ -56,7 +65,7 @@ body.logged-out {
 
     .news {
         height: 45px;
-        border-bottom: 1px solid rgba(49,78,95,0.12);
+        border-bottom: $default_border_bottom;
         margin-bottom: 20px;
 
         p {
