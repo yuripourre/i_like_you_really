@@ -4,7 +4,9 @@
   </div>
   <%= form_tag(add_friends_facebook_index_path) do %>
   <div class="row">
-    <%= render partial: "friend", collection: @friends %>    
+    <% @friends.each_with_index do |friend, current| %>
+      <%= render partial: "friend", object: friend, locals: { current: current} %>    
+    <% end %>
   </div>
   <%= submit_tag "Salvar Amigos" %>
  <% end %>

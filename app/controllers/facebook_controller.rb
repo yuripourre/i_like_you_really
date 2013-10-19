@@ -1,13 +1,18 @@
 class FacebookController < ApplicationController
 
   def friends
-    @friends = Facebook.new(current_user.access_token).friends.sort_by { |f|
-      f["name"]
-    }
+    @friends = FacebookFriends.new(current_user).update_graph.friends
   end
 
   def add_friends
-    FacebookFriends.new(current_user, params).save
+    current_user.update_attributes(user_params)
     redirect_to root_path
+  end
+
+
+private
+  def user_params
+    params.require(:user)
+      .permit(relationships_attributes: [:like, :comment, :facebook_user_id])
   end
 end

@@ -12,9 +12,10 @@
   </div>
   
   <div class="actions">
-    <i class="icon-thumbs-up-alt check" data-checkbox="user[friends][<%= friend['id'] %>][like]"></i>
-    <%= check_box_tag "user[friends][#{friend['id']}][like]" %>
-    <i class="icon-comments-alt check" data-checkbox="user[friends][<%= friend['id'] %>][comment]"></i>
-    <%= check_box_tag "user[friends][#{friend['id']}][comment]" %>
+    <%= hidden_field_tag "user[relationships_attributes][#{current}][facebook_user_id]", friend['id'] %>
+    <i class="icon-thumbs-up-alt check" data-checkbox="user[relationships_attributes][<%= current %>][like]"></i>
+    <%= check_box_tag "user[relationships_attributes][#{current}][like]" %>
+    <i class="icon-comments-alt check" data-checkbox="user[relationships_attributes][<%= current %>][comment]"></i>
+    <%= check_box_tag "user[relationships_attributes][#{current}][comment]" %>
   </div>
 </div>

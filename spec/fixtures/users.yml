@@ -1,3 +1,7 @@
 user1:
   id: 1
   email: "jonh@doe.com"
+
+user2:
+  id: 2
+  email: "jonh2@doe.com"
