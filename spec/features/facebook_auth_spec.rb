@@ -1,27 +1,23 @@
 require "spec_helper"
 
-describe User do
+describe "Facebook authentication" do 
 
   before do
-    facebook_info = {
-      "id" => '12345',
-      "link" => 'https://www.facebook.com/leonardo.couto.180',
-      "email" => 'user@example.com',
-      "first_name" => 'Leonardo',
-      "last_name" => 'Couto',
-      "website" => 'http://google.com'
-    }
-    OmniAuth.config.mock_auth[:facebook] = {
+    OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new({
         "uid" => '12345',
         "provider" => 'facebook',
+        "info" => { "email" => 'user@example.com' },
         "user_info" => {"nickname" => 'leonardocouto'},
         "credentials" => {"token" => 'bob123'},
-        "extra" => {"user_hash" => facebook_info}
-      }
+        "extra" => { "raw_info" => { "name" => 'leonardo' } }
+      })
   end
 
   it "sign in on facebook" do
-    pending 
+    pending
+    visit "/"
+    click_link "Connect with Facebook"
+    page.should have_content("leonardo")
   end
 
 end

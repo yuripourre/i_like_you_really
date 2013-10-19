@@ -1,9 +1,14 @@
 class Facebook
 
   attr_reader :access_token, :graph
+
   def initialize(token)
     @access_token =  token
     @graph = Koala::Facebook::API.new(@access_token)
+  end
+
+  def self.oauth
+    Koala::Facebook::OAuth.new(ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_APP_SECRET"])
   end
 
   def friends
@@ -21,4 +26,13 @@ class Facebook
   def comment(id, message)
     @graph.put_comment(id, message)
   end
+
+  def wall(id)
+    @graph.get_connection(id, "feed")
+  end
+
+  def wall_since(friend_id, since)
+    @graph.fql_query("SELECT post_id, actor_id FROM stream WHERE created_time > #{since} AND filter_key in (SELECT filter_key FROM stream_filter WHERE uid=me())")
+  end
+
 end
