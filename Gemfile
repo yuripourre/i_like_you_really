@@ -19,12 +19,14 @@ gem 'puma'
 gem 'anjlab-bootstrap-rails', '~> 3.0.0.0', :require => 'bootstrap-rails'
 gem 'anjlab-widgets', '~> 3.0.0'
 gem 'spinjs-rails'
+gem 'font-awesome-rails'
 
 group :development do
   gem 'guard-rspec', require: false
   gem 'capistrano', '~> 3.0.0'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
+  gem 'pry'
 end
 
 group :development, :test do
@@ -39,6 +41,7 @@ end
 
 group :test do
   gem 'capybara'
+  gem 'selenium-webdriver'
 end
 
 group :doc do

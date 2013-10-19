@@ -16,14 +16,22 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">I Like You, Really</a>
+        <a class="navbar-brand" href="#">
+          <i class="icon-thumbs-up-alt"></i> I Like You, Really
+        </a>
+      </div>
+
+      <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <button class="btn btn-facebook"><i class="icon-facebook"></i> | Connect with Facebook</button>
+          </li>
+        </ul>
       </div>
       <a href=<%= user_omniauth_authorize_path(:facebook)%>>
         <button class="btn btn-facebook"><i class="icon-facebook"></i>Connect with Facebook</button>
       </a>
     </nav>
-
     <%= yield %>    
-    
   </body>
 </html>

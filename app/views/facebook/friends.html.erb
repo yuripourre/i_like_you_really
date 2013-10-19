@@ -1,0 +1,7 @@
+<h1> Friends </h1>
+
+<% @friends.each do |friend| %>
+  <img src="https://graph.facebook.com/<%=friend['id']%>/picture?type=square">
+  <%= friend['name'] %>
+  <br/>
+<% end %>

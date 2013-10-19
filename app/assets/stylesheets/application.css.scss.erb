@@ -1,0 +1,75 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+@import "twitter/bootstrap";
+@import "social_buttons";
+@import "font-awesome";
+
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro);
+
+$navbar-height: 70px;
+$default_border_bottom: 1px solid rgba(49,78,95,0.12);
+
+.navbar {
+    height: $navbar-height;
+    border-bottom: $default_border_bottom;
+    
+    li > .btn {
+        margin-top: 15px;
+        margin-right: 10px;
+    }
+
+    .navbar-brand {
+        margin-top: 5px;
+        font-size: 1.8em;
+    }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Source Sans Pro", "Helvetica Neue", sans;
+}
+
+body {
+    font-family: "Source Sans Pro", "Helvetica Neue", sans;
+}
+
+body.logged-out {
+    .intro {
+        background: url(<%= asset_path 'splash/diving.jpg' %>);
+        background-size: 100%;
+        height: 450px;
+        color: white;
+    }
+
+    .navbar {
+        margin-bottom: 0;
+    }
+
+    .tagline {
+        margin-top: 120px;
+        font-size: 4.0em;
+        width: 650px;
+        text-shadow: 0.1em 0.0em 0.5em black;
+    }
+
+    .news {
+        height: 45px;
+        border-bottom: $default_border_bottom;
+        margin-bottom: 20px;
+
+        p {
+            line-height: 3em;
+        }
+    }
+}

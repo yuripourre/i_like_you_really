@@ -35,4 +35,8 @@ class Facebook
     @graph.fql_query("SELECT post_id, actor_id FROM stream WHERE created_time > #{since} AND filter_key in (SELECT filter_key FROM stream_filter WHERE uid=me())")
   end
 
+  def picture(id)
+    @graph.get_picture(id)
+  end
+
 end

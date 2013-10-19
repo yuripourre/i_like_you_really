@@ -5,6 +5,9 @@ require "rspec/rails"
 require "mocha/setup"
 require "capybara/rails"
 require "omniauth"
+require 'capybara/rails'
+require 'capybara/rspec'
+include Capybara::DSL
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
@@ -16,7 +19,7 @@ RSpec.configure do |config|
   config.infer_base_class_for_anonymous_controllers = false
   config.order = "random"
   OmniAuth.config.test_mode = true
-
+  config.global_fixtures =  :all
 
   config.before(:each, :type => :controller) do
     request.env["devise.mapping"] = Devise.mappings[:user] 
