@@ -16,6 +16,7 @@ gem 'omniauth-facebook'
 gem 'mocha', require: false
 gem 'koala', '~> 1.7.0rc1'
 gem 'puma'
+gem 'choices'
 gem 'anjlab-bootstrap-rails', '~> 3.0.0.0', :require => 'bootstrap-rails'
 gem 'anjlab-widgets', '~> 3.0.0'
 gem 'spinjs-rails'
@@ -42,6 +43,7 @@ end
 group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
+  gem 'shoulda-matchers'
 end
 
 group :doc do

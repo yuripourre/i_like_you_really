@@ -17,14 +17,11 @@ describe User do
   end
 
   it "dont find any user for facebook auth" do
-    email = "bob@email.com"
-    token = "token"
-    name = "bob"
     auth = hash_to_object(provider: provider, 
       uid: uid,
-      info: { email: email },
+      info: { email: "bob@email.com" },
       credentials: { token: "token" },
-      extra: { raw_info: { name: name } })
+      extra: { raw_info: { name: "bob" } })
       
     User.expects(:with_omniauth).with(provider, uid).returns(nil)
     User.expects(:renew_token).returns(user)

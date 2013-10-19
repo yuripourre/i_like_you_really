@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   #
   # Tries to find an existing user by uid or create one with a random password otherwise.
   has_many :friends
+  has_many :comments
 
   class << self
     def find_for_facebook_oauth(auth, signed_in_resource = nil)
