@@ -19,11 +19,12 @@
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro);
 
 $navbar-height: 70px;
-$default_border_bottom: 1px solid rgba(49,78,95,0.12);
+$default-border-bottom: 1px solid rgba(49,78,95,0.12);
+$friend-box-hover-color: #7bdcf5;
 
 .navbar {
     height: $navbar-height;
-    border-bottom: $default_border_bottom;
+    border-bottom: $default-border-bottom;
     
     li > .btn {
         margin-top: 15px;
@@ -65,11 +66,57 @@ body.logged-out {
 
     .news {
         height: 45px;
-        border-bottom: $default_border_bottom;
+        border-bottom: $default-border-bottom;
         margin-bottom: 20px;
 
         p {
             line-height: 3em;
+        }
+    }
+}
+
+body.logged-in {
+    .friends {
+        .friend {
+            margin-bottom: 30px;
+
+            > * {
+                margin: 5px 5px;
+            }
+
+            .data {
+                float: left;
+                width: 80px;
+                height: 100%;
+                
+                .avatar {
+                    img {
+                        width: 100%;
+                        height: 80px;
+                    }
+                }                
+            }
+            
+            .name {
+                font-size: 0.9em;
+            }
+
+            .actions {
+                float: right;
+                font-size: 3em;
+                
+                .check {
+                    color: $friend-box-hover-color;
+                    
+                    &:hover {
+                        color: yellow;
+                    }
+                }
+                
+                input[type="checkbox"] {
+                    display: none;
+                }
+            }
         }
     }
 }
