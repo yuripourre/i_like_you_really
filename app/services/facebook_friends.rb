@@ -7,15 +7,17 @@ class FacebookFriends
   end
 
   def save
-
+    friends_from_hash
   end
 
 
   def friends_from_hash
     @friends.map do |key, value|
-       {facebook_id: key, comment: value[:comment], like: value[:like], user_id: user.id}
-       require 'pry'; binding.pry
-
+      create_friend({facebook_id: key, comment: value[:comment], like: value[:like], user_id: user.id})
     end
+  end
+
+  def create_friend(friend)
+    Friend.create(friend)
   end
 end

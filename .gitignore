@@ -20,3 +20,4 @@
 *.box
 .env
 database.yml
+settings.yml

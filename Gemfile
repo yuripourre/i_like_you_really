@@ -32,7 +32,6 @@ end
 
 group :development, :test do
   gem 'rspec-rails', '~> 2.0'
-  gem 'dotenv-rails'
 end
 
 group :assets do
