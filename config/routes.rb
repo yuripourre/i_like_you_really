@@ -15,6 +15,8 @@ ILikeYouReally::Application.routes.draw do
     collection do
       get :friends
       post :add_friends
+      put :toggle_like
+      put :toggle_comment
     end
   end
 
@@ -23,5 +25,5 @@ ILikeYouReally::Application.routes.draw do
       get :friends
     end
   end
-  
+
 end

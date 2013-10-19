@@ -33,6 +33,13 @@ ActiveRecord::Schema.define(version: 20131019174102) do
     t.datetime "updated_at"
   end
 
+  create_table "facebook_users", id: false, force: true do |t|
+    t.string   "facebook_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "friends", force: true do |t|
     t.integer  "user_id"
     t.string   "facebook_id"
@@ -45,6 +52,15 @@ ActiveRecord::Schema.define(version: 20131019174102) do
   create_table "posts", force: true do |t|
     t.integer  "friend_id"
     t.string   "post_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "relationships", force: true do |t|
+    t.integer  "user_id"
+    t.string   "facebook_user_id"
+    t.boolean  "like"
+    t.boolean  "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
