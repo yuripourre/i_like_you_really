@@ -9,6 +9,8 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'devise'
+gem "koala", "~> 1.7.0rc1"
+gem 'dotenv-rails', :groups => [:development, :test]
 
 group :doc do
   gem 'sdoc', require: false
