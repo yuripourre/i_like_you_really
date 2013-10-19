@@ -3,7 +3,8 @@ class FacebookGuest
   attr_reader :test_users, :permissions
 
   def initialize
-    @test_users = Koala::Facebook::TestUsers.new(app_id: ENV["FACEBOOK_APP_ID"], secret: ENV["FACEBOOK_APP_SECRET"])
+    @test_users = Koala::Facebook::TestUsers.new(app_id: Rails.configuration.facebook.app_id,
+                                                 secret: Rails.configuration.facebook.app_secret)
     @permissions = "read_stream, publish_actions" #see https://developers.facebook.com/docs/reference/login/extended-permissions/
   end
 

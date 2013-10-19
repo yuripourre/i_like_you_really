@@ -3,6 +3,9 @@ defaults: &defaults
   preferences:
     like_interval: 1
     comment_interval: 1
+  facebook:
+    app_id: 220912274737299
+    app_secret: 309decf24d39fc92466ec90450b67730
 
 development:
   <<: *defaults

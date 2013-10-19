@@ -8,7 +8,8 @@ class Facebook
   end
 
   def self.oauth
-    Koala::Facebook::OAuth.new(ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_APP_SECRET"])
+    Koala::Facebook::OAuth.new(Rails.configuration.facebook.app_id,
+                               Rails.configuration.facebook.app_secret)
   end
 
   def friends
