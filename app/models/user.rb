@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   # source: https://github.com/plataformatec/devise/wiki/OmniAuth:-Overview
   #
   # Tries to find an existing user by uid or create one with a random password otherwise.
+  has_many :friends
 
   def self.find_for_facebook_oauth(auth, signed_in_resource = nil)
     user = User.where(provider: auth.provider, uid: auth.uid).first
@@ -23,9 +24,9 @@ class User < ActiveRecord::Base
 
   # source: https://github.com/plataformatec/devise/wiki/OmniAuth:-Overview
   #
-  # Notice that Devise RegistrationsController by default calls "User.new_with_session" 
-  # before building a resource. This means that, if we need to copy data from session 
-  # whenever a user is initialized before sign up, we just need to implement new_with_session 
+  # Notice that Devise RegistrationsController by default calls "User.new_with_session"
+  # before building a resource. This means that, if we need to copy data from session
+  # whenever a user is initialized before sign up, we just need to implement new_with_session
   # in our model. Here is an example that copies the facebook email if available:
 
   def self.new_with_session(params, session)
