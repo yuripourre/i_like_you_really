@@ -1,4 +1,12 @@
-<h1>Comment</h1>
+<div class="container">
+  <h2>Comment</h2>
+<table class="table table-bordered">
+  <tr>
+    <td><%= @comment.value%></td>
+  </tr>
+</table>
 
-<p>Message</p>
-<p><%= @comment.value %></p>
+<%= link_to "Edit", edit_comment_path(@comment) %> |
+<%= link_to "Back", :back %>
+
+</div>

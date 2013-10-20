@@ -31,7 +31,7 @@ class RelationshipDecorator
   end
 
   def comment_class
-    like ? "icon-comments" : "icon-comments-alt"
+    comment ? "icon-comments" : "icon-comments-alt"
   end
 
 end

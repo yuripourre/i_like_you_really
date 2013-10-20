@@ -6,6 +6,9 @@ defaults: &defaults
   facebook:
     app_id: 220912274737299
     app_secret: 309decf24d39fc92466ec90450b67730
+  redis:
+    host: "redis://10.11.12.13:6379"
+    namespace: "ilikeyoureally"
 
 development:
   <<: *defaults
