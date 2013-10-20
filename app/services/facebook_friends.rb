@@ -37,11 +37,18 @@ class FacebookFriends
   end
 
   def update_graph
+    return self if updated_recently?
+
     mirror_additions
     mirror_removals
+
     self
   rescue
     self
+  end
+
+  def updated_recently?
+    user.latest_relationship_update > 24.hours.ago
   end
 
   def mirror_additions

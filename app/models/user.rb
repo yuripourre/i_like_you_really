@@ -34,6 +34,10 @@ class User < ActiveRecord::Base
     hidden_wizards.where(wizard_name: wizard_name).empty?
   end
 
+  def latest_relationship_update
+    relationships.maximum(:updated_at)
+  end
+
   class << self
 
     def find_for_facebook_oauth(auth, signed_in_resource = nil)
