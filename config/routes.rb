@@ -2,7 +2,6 @@ require 'sidekiq/web'
 
 ILikeYouReally::Application.routes.draw do
 
-  mount Sidekiq::Web => '/sidekiq' 
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
   devise_scope :user do
     resources :comments
@@ -12,7 +11,7 @@ ILikeYouReally::Application.routes.draw do
 
   resources :facebook do
     collection do
-      get :friends
+      get :friends, path: "/choose/friends"
       post :add_friends
       put :toggle_like
       put :toggle_comment
@@ -24,9 +23,7 @@ ILikeYouReally::Application.routes.draw do
     end
   end
 
-  resources :dashboard do
-    collection do
-      get :index
-    end
-  end
+  resources :dashboards
+
+  put "/wizard/:wizard_name/hide" => "wizards#hide", as: "hide_wizard"
 end

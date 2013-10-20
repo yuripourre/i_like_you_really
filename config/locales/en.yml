@@ -29,3 +29,8 @@ en:
     ego_feeding: "Ego-feeding %s %s"
     manic_depression: "Saving %s %s from manic depression"
     being_there: "Being there for %s %s"
+
+  menu:
+    friends: "Manage Friends"
+    comments: "Manage Comments"
+    dashboard: "Dashboard"

@@ -3,7 +3,7 @@ require "spec_helper"
 describe FacebookFriends do
   let(:friends) { [ {"id"=> "1000", "name" => "Thiago"} ] }
   let(:user) { users(:user1) }
-  let(:facebook) {  stub("facebook", friends: friends) }
+  let(:facebook) { stub("facebook", friends: friends) }
   subject { FacebookFriends.new(user, facebook) }
 
   context "adding new facebook friends" do
@@ -15,7 +15,7 @@ describe FacebookFriends do
     it "adds only the new friend" do
       subject.update_graph
       friends << { "id" => "1001", "name" => "Vitor"}
-      FacebookFriends.new(user, facebook).update_graph
+      FacebookFriends.new(user, facebook).update_graph(true)
       expect(user.reload.friends).to have(2).itens
     end
 
@@ -36,7 +36,7 @@ describe FacebookFriends do
       friends << { "id" => "1001", "name" => "Vitor"}
       subject.update_graph
       friends.shift
-      FacebookFriends.new(user, facebook).update_graph
+      FacebookFriends.new(user, facebook).update_graph(true)
       expect(user.reload.friends).to have(1).item
     end
   end
