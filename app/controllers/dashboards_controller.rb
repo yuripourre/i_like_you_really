@@ -2,9 +2,9 @@ class DashboardsController < ApplicationController
   def index
     @comment_count = current_user.activities.comments.count
     @like_count    = current_user.activities.likes.count
-    @last_people   = current_user.activities.latest.limit(12).distinct.map { |a|
+    @last_people   = current_user.activities.latest.limit(12).map { |a|
 
-      relationship = current_user.relationships.find_by(facebook_user_id: a.friend_id)
+      relationship = current_user.relationships.find_by(facebook_user_id: a.friend_id).distinct
       RelationshipDecorator.new(relationship)
     }
   end
