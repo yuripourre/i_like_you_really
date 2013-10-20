@@ -1,8 +1,10 @@
 class FacebookGuestController < ApplicationController
 
   def friends
+
     facebook_guest = FacebookGuest.new
-    guest_user = facebook_guest.test_users.list[2]#randomize 2
+    guest_list = facebook_guest.test_users.list
+    guest_user = guest_list[rand(guest_list.size)]
 
     @user = User.where(:uid => guest_user['id']).first # Find the user depending on the params
     sign_in @user
