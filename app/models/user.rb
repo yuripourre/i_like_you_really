@@ -49,7 +49,7 @@ class User < ActiveRecord::Base
 
   def friends_recently_interacted_with
     relationships.select("DISTINCT facebook_user_id").
-      where("facebook_user_id IN (SELECT friend_id FROM activities ORDER by updated_at DESC)")
+      where("facebook_user_id IN (SELECT friend_id FROM activities WHERE user_id = relationships.user_id ORDER by updated_at DESC)")
   end
 
   class << self
