@@ -45,4 +45,8 @@ class Facebook
     @graph.get_picture(id)
   end
 
+  def get_object(object_id)
+    @graph.get_object object_id
+  end
+
 end
