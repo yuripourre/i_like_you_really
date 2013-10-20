@@ -10,7 +10,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'devise'
 gem 'omniauth'
 gem 'pry'
-gem 'sinatra' 
+gem 'sinatra'
 gem 'pry-debugger'
 gem 'debugger'
 gem 'omniauth-facebook'
@@ -28,6 +28,7 @@ gem 'textacular', '~> 3.0'
 gem 'kaminari'
 gem 'dalli'
 gem 'newrelic_rpm'
+gem 'kaminari-bootstrap', git: 'https://github.com/mcasimir/kaminari-bootstrap.git'
 
 group :development do
   gem 'guard-rspec', require: false

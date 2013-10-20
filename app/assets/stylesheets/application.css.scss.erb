@@ -17,11 +17,13 @@
 @import "font-awesome";
 @import "mobile";
 
-@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400);
 
 $navbar-height: 70px;
 $default-border-bottom: 1px solid rgba(49,78,95,0.12);
 $friend-box-hover-color: #7bdcf5;
+$number-color:  #ee6768;
+$darker-title: darken($friend-box-hover-color, 30);
 
 h1, h2, h3, h4, h5, h6 {
     font-family: "Source Sans Pro", "Helvetica Neue", sans;
@@ -110,7 +112,37 @@ body.logged-in {
 
     .wizard {
         .icon {
-            color: darken($friend-box-hover-color, 30);
+            color: $darker-title;
+        }
+    }
+
+    .dashboard {
+        .latest-peeps {
+            margin-top: 2em;
+            
+            h2 {
+                margin-bottom: 1em;
+            }
+        }
+
+        .details {
+            font-size: 0.8em;
+        }
+
+        .infographics {
+            .datum {
+                color: $darker-title;
+                font-weight: 200;
+                text-align: center;
+                font-size: 2em;
+
+                .number {
+                    font-weight: 400;
+                    color: $number-color;
+                    font-size: 5em;
+                    font-family: "Helvetica Neue", "Source Sans Pro", "Arial", sans;
+                }
+            }
         }
     }
     
@@ -167,7 +199,7 @@ body.logged-in {
         .latest {
             margin-top: 20px;
             font-size: 1.5em;
-            color: darken($friend-box-hover-color, 30);
+            color: $darker-title;
 
             .happy {
                 text-align: center;
@@ -175,7 +207,7 @@ body.logged-in {
                 
                 .count {
                     font-weight: 400;
-                    color: #ee6768;
+                    color: $number-color;
                 }
             }
         }

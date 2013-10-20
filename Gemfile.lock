@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/mcasimir/kaminari-bootstrap.git
+  revision: 1271c3a612f446ad015a32557cc59e61a58cdebe
+  specs:
+    kaminari-bootstrap (0.1.3)
+      kaminari (>= 0.13.0)
+      rails
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -307,6 +315,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   kaminari
+  kaminari-bootstrap!
   koala (~> 1.7.0rc1)
   letter_opener
   mocha

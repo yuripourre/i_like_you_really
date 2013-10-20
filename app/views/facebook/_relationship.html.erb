@@ -1,18 +1,6 @@
 <%= cache(relationship) do %>
 <div class="col-md-3 cols-xs-4 friend">
-  <%= cache(relationship.friend) do %>
-  <div class="data">
-    <div class="avatar">
-      <img src="<%= relationship.image %>">
-    </div>
-  </div>
-
-  <div>
-    <span class="name">
-      <a href="https://www.facebook.com/<%= relationship.facebook_id %>" target= "_blank"><%= friend_name relationship %></a>
-    </span>
-  </div>
-  <% end %>
+  <%= render partial: "friend", locals: { relationship: relationship } %>
   
   <div class="actions">
     <%= hidden_field_tag "user[relationships_attributes][#{current}][facebook_user_id]", relationship.facebook_id  %>

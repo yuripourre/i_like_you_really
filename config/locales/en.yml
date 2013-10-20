@@ -24,6 +24,11 @@ en:
     label: "Type in a friend's name (or a part of it) to filter. It takes a minimum of 3 characters to start searching. If you clear the field, the list will be reset."
     placeholder: "Someone you want to make happier"
 
+  interest:
+    post: "post"
+    like: "like"
+    comment: "comment"
+
   user:
     making_happy: "Bringing joy to %s %s"
     ego_feeding: "Ego-feeding %s %s"
@@ -34,3 +39,10 @@ en:
     friends: "Manage Friends"
     comments: "Manage Comments"
     dashboard: "Dashboard"
+
+  dashboard:
+    already_like: "You've already liked"
+    already_comment: "You've already made"
+    last_10_people: "Last 12 people to have their egos massaged"
+    no_people: "More like no people, yo."
+    take_me_to_the_details: "Ok, I'm tired of all this cute crap. Take me to a list!"

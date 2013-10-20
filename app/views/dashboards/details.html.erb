@@ -1,0 +1,38 @@
+<div class="container dashboard">
+  <div class="page-header">
+    <h1>Activity Log</h1>
+  </div>
+
+  <div id="fb-root"></div> <script>(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/en_US/all.js#xfbml=1"; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'facebook-jssdk'));</script>
+  
+  <table class="table table-bordered">
+    <%- @activities.each do |activity| %>
+    <tr>
+      <td>
+        <%- if activity.like %>
+        <i class="icon-thumbs-up-alt"/>
+        <%- end %>
+      </td>
+      <td>
+        <%- if activity.comment %>
+        <i class="icon-comments-alt"/>
+        <%- end %>
+      </td>
+      <td>
+        <%= activity.value %>
+      </td>
+      <td>
+        <%= activity.friend_id %>
+      </td>
+      <td>
+        <%= activity.created_at.strftime("%H:%M:%S - %M/%d/%Y") %>
+      </td>
+      <td>
+        <%= link_to "https://www.facebook.com/"+activity.object_id.gsub("_","/posts/"), "https://www.facebook.com/"+activity.object_id.gsub("_","/posts/") %>
+      </td>
+    </tr>
+    <%- end %>
+  </table>
+
+  <%= paginate @activities %>
+</div>

@@ -1,0 +1,13 @@
+<%= cache(relationship.friend) do %>
+<div class="data">
+  <div class="avatar">
+    <img src="<%= relationship.image %>">
+  </div>
+</div>
+
+<div>
+  <span class="name">
+    <a href="https://www.facebook.com/<%= relationship.facebook_id %>" target= "_blank"><%= friend_name relationship %></a>
+  </span>
+</div>
+<% end %>

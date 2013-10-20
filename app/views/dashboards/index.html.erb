@@ -1,39 +1,43 @@
 <%= help_message_for "dashboard" %>
 
-<div class="container">
+<div class="container dashboard">
   <div class="page-header">
     <h1>Dashboard</h1>
   </div>
 
-  <div id="fb-root"></div> <script>(function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/en_US/all.js#xfbml=1"; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'facebook-jssdk'));</script>
+  <div class="row details">
+      <%= link_to t("dashboard.take_me_to_the_details"), details_dashboards_path, class: "pull-right" %>
+  </div>
+  
+  <div class="row infographics">
+    <div class="col-md-3 col-md-offset-2 datum">
+      <%= t("dashboard.already_like") %>
+      <div class="number">
+        <%= @like_count %>
+      </div>
+      <%= t("interest.post").pluralize(@like_count) %>
+    </div>
 
-  <table class="table table-bordered">
-    <%- @activities.each do |activity| %>
-      <tr>
-        <td>
-          <%- if activity.like %>
-            <i class="icon-thumbs-up-alt"/>
-          <%- end %>
-        </td>
-        <td>
-          <%- if activity.comment %>
-            <i class="icon-comments-alt"/>
-          <%- end %>
-        </td>
-        <td>
-          <%= activity.value %>
-        </td>
-        <td>
-          <%= activity.friend_id %>
-        </td>
-        <td>
-          <%= activity.created_at.strftime("%H:%M:%S - %M/%d/%Y") %>
-        </td>
-        <td>
-          <%= link_to "https://www.facebook.com/"+activity.object_id.gsub("_","/posts/"), "https://www.facebook.com/"+activity.object_id.gsub("_","/posts/") %>
-        </td>
-      </tr>
-    <%- end %>
-  </table>
+    <div class="col-md-3 col-md-offset-1 datum">
+      <%= t("dashboard.already_comment") %>
+      <div class="number">
+        <%= @comment_count %>
+      </div>
+      <%= t("interest.comment").pluralize(@comment_count) %>
+    </div>    
+  </div>
+
+  <div class="row latest-peeps">
+    <h2><%= t("dashboard.last_10_people") %></h2>
+
+    <% if @last_people.empty? %>
+      <p class="lead">
+        <%= t("dashboard.no_people") %>
+      </p>
+    <% else %>
+      <%= render partial: "friends", object: @last_people %>
+    <% end %>
+  </div>
+
 
 </div>

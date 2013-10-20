@@ -1,0 +1,5 @@
+<% friends.each do |relationship| %>
+<div class="col-md-1 cols-xs-2 friend">
+  <%= render partial: "facebook/friend", locals: { relationship: relationship } %>
+</div>
+<% end %>

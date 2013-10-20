@@ -23,7 +23,11 @@ ILikeYouReally::Application.routes.draw do
     end
   end
 
-  resources :dashboards
+  resources :dashboards, only: [:index] do
+    collection do
+      get :details
+    end
+  end
 
   put "/wizard/:wizard_name/hide" => "wizards#hide", as: "hide_wizard"
 end
