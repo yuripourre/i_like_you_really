@@ -13,6 +13,14 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :relationships
 
+  def facebook_image_uri
+    "https://graph.facebook.com/#{self.uid}/picture"
+  end
+
+  def happy_friends_count
+    relationships.where('"like" = true OR comment = true').count
+  end
+
   class << self
 
     def with_friend(friend_facebook_id)

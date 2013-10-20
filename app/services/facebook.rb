@@ -37,6 +37,10 @@ class Facebook
     "AND is_hidden = 0 AND created_time > #{since} AND actor_id in (#{friends})")
   end
 
+  def wall_with_limit(limit)
+    @graph.get_connection("me", "home?limit=#{limit}")
+  end
+
   def picture(id)
     @graph.get_picture(id)
   end

@@ -25,5 +25,6 @@ module ILikeYouReally
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.from_file "settings.yml"
+    # config.active_record.schema_format = :sql
   end
 end

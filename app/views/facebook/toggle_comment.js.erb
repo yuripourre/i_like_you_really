@@ -3,3 +3,5 @@
 <% else %>
     $(".comment[href$='<%= @relationship.facebook_user_id %>'] i").removeClass("icon-comments").addClass("icon-comments-alt");
 <% end %>
+
+$(".stats-container").html("<%= j(render(partial: "stats")) %>");

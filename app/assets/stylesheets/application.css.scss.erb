@@ -17,7 +17,7 @@
 @import "font-awesome";
 @import "mobile";
 
-@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400);
 
 $navbar-height: 70px;
 $default-border-bottom: 1px solid rgba(49,78,95,0.12);
@@ -66,7 +66,6 @@ body.logged-out {
         margin-bottom: 0;
     }
 
-
     .news {
         height: 45px;
         border-bottom: $default-border-bottom;
@@ -101,7 +100,18 @@ body.logged-out {
 }
 
 body.logged-in {
+    .navbar {
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+            margin-top: 10px;
+            border: solid 1px $friend-box-hover-color;
+        }
+    }
+    
     .friends {
+        margin-top: 20px;
         .friend {
             float: left;
             margin-bottom: 30px;
@@ -111,7 +121,6 @@ body.logged-in {
             }
 
             .data {
-                float: left;
                 width: 80px;
                 height: 100%;
                 
@@ -144,4 +153,44 @@ body.logged-in {
             }
         }
     }
+
+    .stats {
+        .you {
+            width: 100%;
+            opacity: 0.7;
+        }
+
+        .latest {
+            margin-top: 20px;
+            font-size: 1.5em;
+            color: darken($friend-box-hover-color, 30);
+
+            .happy {
+                text-align: center;
+                font-weight: 300;
+                
+                .count {
+                    font-weight: 400;
+                    color: #ee6768;
+                }
+            }
+        }
+    }
 }
+
+a.like {
+    text-decoration: none;
+    &:hover{
+        text-decoration: none;
+    }
+}
+
+a.comment {
+    text-decoration: none;
+    &:hover{
+        text-decoration: none;
+    }
+}
+
+
+

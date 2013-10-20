@@ -16,4 +16,8 @@
 //= require twitter/bootstrap
 //= require anjlab/datepicker
 //= require anjlab/timepicker
+//= require spin
+//= require spinjs.jquery
+//= require jquery.infinitescroll
+//= require filter
 //= require_tree .

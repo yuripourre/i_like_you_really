@@ -23,6 +23,8 @@ gem 'anjlab-bootstrap-rails', '~> 3.0.0.0', :require => 'bootstrap-rails'
 gem 'anjlab-widgets', '~> 3.0.0'
 gem 'spinjs-rails'
 gem 'font-awesome-rails'
+gem 'textacular', '~> 3.0'
+gem 'kaminari'
 
 group :development do
   gem 'guard-rspec', require: false

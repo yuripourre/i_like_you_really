@@ -18,4 +18,11 @@ ILikeYouReally::Application.routes.draw do
       get :friends
     end
   end
+
+  resources :dashboard do
+    collection do
+      get :index
+    end
+  end
+
 end

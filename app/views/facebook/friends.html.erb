@@ -1,12 +1,76 @@
-<div class="container friends">
-  <div class="page-header">
-    <h1>Friends</h1>  
-  </div>
-  <%= form_tag(add_friends_facebook_index_path) do %>
+<div class="container">
   <div class="row">
-    <% @friends.each_with_index do |friend, current| %>
-      <%= render partial: "friend", object: friend, locals: { current: current} %>    
-    <% end %>
+    <div class="col-md-9">
+      <div class="page-header">
+        <h1>Friends</h1>  
+      </div>
+
+      <%= form_tag friends_facebook_index_path, class: "filtering", remote: true, method: :get do %>
+        <label for="filter">
+          <%= t("filter.label") %>
+        </label>
+        <%= text_field_tag :filter, params[:filter], class: "form-control", placeholder: t("filter.placeholder") %>
+      <% end %>
+
+      <div class="friends">
+        <%= render partial: "friends", object: @friends %>
+      </div>
+    </div>
+
+    <div class="col-md-3 stats-container">
+      <%= render partial: "stats" %>
+    </div>    
   </div>
- <% end %>
 </div>
+
+<script type="text/javascript">
+  var scheduledFetchId,
+      form = $("form.filtering");
+
+  function startSearch() {
+    $(".friends").spin();
+  }
+  
+  function endSearch() {
+    $(".friends").spin(false);
+  }
+
+  function showSpinners() {
+    $(this).parents(".friend").spin();
+  }
+
+  function hideSpinners() {
+    $(this).parents(".friend").spin(false);
+  }
+
+  $(document).ready(function() {
+    $(".friends").infinitescroll({
+      navSelector: "nav.pagination",
+      nextSelector: "nav.pagination a[rel=next]",
+      itemSelector: ".friends .friend"
+    });
+
+  
+    $(".like, .comment")
+      .on("ajax:before", showSpinners)
+      .on("ajax:complete", hideSpinners);
+
+
+    form.on("ajax:before", startSearch);
+    form.on("ajax:complete", endSearch);
+  
+    $("input[name='filter']").on("keyup", function() {
+      var currentVal = $(this).val(),
+          form = $(this).parents("form");
+
+      if (currentVal.length == 0 || currentVal.length >= 3) {
+        if (scheduledFetchId) {
+          clearTimeout(scheduledFetchId);
+          scheduledFetchId = null;
+        }
+
+        scheduledFetchId = Filter.scheduleFiltering(form, currentVal);
+      }
+    });
+  });
+</script>
