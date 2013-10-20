@@ -23,7 +23,7 @@ ILikeYouReally::Application.routes.draw do
     end
   end
 
-  resources :dashboards, only: [:index] do
+  resources :dashboards, path: "dashboard", only: [:index] do
     collection do
       get :details
     end

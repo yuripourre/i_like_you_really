@@ -1,22 +1,26 @@
 <%= help_message_for "comments" %>
 
 <div class="container">
-  <h2>Comments</h2>
+  <div class="page-header">
+    <h1>Comments</h1>
+  </div>
+
 <table class="table table-bordered">
   <tr>
     <td>Text</td>
-    <td></td>
     <td></td>
   </tr>
   <% @comments.each do |comment| %>
   <tr>
     <td><%= link_to comment.value, comment_path(comment)%></td>
-    <td><%= link_to "Edit", edit_comment_path(comment)%></td>
-    <td><%= link_to "Remove", comment_path(comment), method: :delete %></td>
+    <td>
+      <%= link_to "Edit", edit_comment_path(comment)%>
+      |
+      <%= link_to "Remove", comment_path(comment), method: :delete %>
+    </td>
   </tr>
   <% end %>
 </table>
 
 <%= link_to "New", new_comment_path, class: "btn btn-primary"%>
-<%= link_to "Dashboard", friends_facebook_index_path%>
 </div>
