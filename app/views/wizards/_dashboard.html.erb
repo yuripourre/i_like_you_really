@@ -1,0 +1,16 @@
+<div class="container wizard">
+  <div class="row">
+    <div class="grid-md-12 grid-xs-12">
+      <h2>What is this?</h2>
+      
+      <p class="lead">
+        What you see below is a summary of what the application has done for you and your friends. At any time in the future you can come here and enjoy all the bliss you've spread among your network.
+      </p>
+
+      <div class="actions pull-right">
+        <%= link_to "Don't show this again", hide_wizard_path(wizard_name: "dashboard"), remote: true, method: :put %>
+
+      </div>
+    </div>
+  </div>
+</div>

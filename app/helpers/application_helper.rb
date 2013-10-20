@@ -14,15 +14,9 @@ module ApplicationHelper
     "stats-#{latest_update.to_i}"
   end
 
-  def wizard_step_one_if_nothing_done_yet
-    if current_user.still_needs_help_for("friends")
-      render partial: "wizards/choose_friends"
-    end
-  end
-
-  def wizard_step_two_if_not_hidden
-    if current_user.still_needs_help_for("comments")
-      render partial: "wizards/write_comments"
+  def help_message_for(name)
+    if current_user.still_needs_help_for(name)
+      render partial: "wizards/#{name}"
     end
   end
 end
