@@ -46,8 +46,7 @@ class Interactor
   def maybe_comment_on(post_id, and_update: nil)
     will_comment = feels_interactive?
 
-    if will_comment
-      comment_text = random_comment_text
+    if will_comment && (comment_text = random_comment_text)
       api.comment(post_id, comment_text)
 
       if (activity = and_update)
@@ -74,7 +73,7 @@ class Interactor
   end
 
   def random_comment_text
-    user.comments.first(offset: rand(user.comments.count)).value
+    user.comments.first(offset: rand(user.comments.count)).try(:value)
   end
 
   def last_known_activity_creation
