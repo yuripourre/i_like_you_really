@@ -2,15 +2,23 @@
   <head>
   </head>
   <body>
-    <div class="container dashboard">
+    <table class="container dashboard">
       <%- @activities.each do |activity| %>
-        <div>
-          <%= activity.category %>
-        </div>
-        <div>
-          <%= activity.friend_id %>
-        </div>
+        <tr>
+          <td>
+            <%= activity.category %>
+          </td>
+          <td>
+            <%= activity.value %>
+          </td>
+          <td>
+            <%= activity.friend_id %>
+          </td>
+          <td>
+            <%= link_to "http://www.facebook.com/"+"#{activity.object_id}" %>
+          </td>
+        </tr>
       <%- end %>
-    </div>
+    </table>
   </body>
 </html>
