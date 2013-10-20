@@ -48,5 +48,5 @@ en:
     take_me_to_the_details: "Ok, I'm tired of all this cute crap. Take me to a list!"
 
   home:
-    users_home: "Last 20 people who joinned us!"
-    no_people: "No people, yet."
+    users_home: "People who joined us"
+    no_people: "No people, yet"
