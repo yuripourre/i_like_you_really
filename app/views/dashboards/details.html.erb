@@ -25,7 +25,7 @@
         <%= activity.friend_id %>
       </td>
       <td>
-        <%= activity.created_at.strftime("%H:%M:%S - %M/%d/%Y") %>
+        <%= activity.created_at.strftime("%m/%d/%Y - %H:%M:%S") %>
       </td>
       <td>
         <%= link_to "https://www.facebook.com/"+activity.object_id.gsub("_","/posts/"), "https://www.facebook.com/"+activity.object_id.gsub("_","/posts/") %>
