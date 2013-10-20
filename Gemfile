@@ -25,6 +25,7 @@ gem 'spinjs-rails'
 gem 'font-awesome-rails'
 gem 'textacular', '~> 3.0'
 gem 'kaminari'
+gem 'newrelic_rpm'
 
 group :development do
   gem 'guard-rspec', require: false
