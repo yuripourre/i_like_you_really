@@ -21,15 +21,15 @@ class User < ActiveRecord::Base
     relationships.where('"like" = true OR comment = true').count
   end
 
+  def marked_friends_ids
+    relationships.where("comment = true OR \"like\" = true").pluck(:facebook_user_id)
+  end
+
+  def with_friend(friend_facebook_id)
+    relationships.where(facebook_user_id: friend_facebook_id).first
+  end
+
   class << self
-
-    def with_friend(friend_facebook_id)
-      relationships.where(facebook_user_id: friend_facebook_id)
-    end
-
-    def marked_friends_ids
-      relationships.where("comment = true OR \"like\" = true").pluck(:facebook_user_id)
-    end
 
     def find_for_facebook_oauth(auth, signed_in_resource = nil)
       user = with_omniauth(auth.provider, auth.uid)

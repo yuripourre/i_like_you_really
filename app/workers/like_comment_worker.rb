@@ -2,16 +2,17 @@ class LikeCommentWorker
   include Sidekiq::Worker
 
   def perform(users)
-    interval = Rails.configuration.preferences.work_interval
+    interval = 5
     users.each {|user|
-      friends_ids = user.marked_friends_ids
+      friends_ids = user.marked_friends_ids * ","
       random_comment = Comment.first(offset:rand(Comment.count))
       api = Facebook.new(user.access_token)
-      posts = api.wall_since(interval.minutes.ago, friends_ids)["data"]
+      result = api.wall_since(interval.minutes.ago.to_i, friends_ids)
+      posts = result if result.any?
       posts.each {|post|
         send_to_stream = false
         activity = Activity.new
-        friend = User.with_friend(post["actor_id"])
+        friend = user.with_friend(post["actor_id"].to_s)
         like_permission = friend.like
         comment_permission = friend.comment
         if [true, false].sample 
@@ -29,7 +30,7 @@ class LikeCommentWorker
             activity.value = random_comment
           end
         end
-        if send_to_stream?
+        if send_to_stream
           activity.object_id = post["post_id"]
           activity.user = user
           activity.save!
