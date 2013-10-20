@@ -9,9 +9,25 @@
 
 <div class="container">
   <div class="row features">
-    <div class="col-md-3 col-xs-12 col-md-offset-3 feature-info">
-      Free space, use it.
+    <div class="col-md-6 col-md-offset-4 feature-info">
+        <h2><%= t("home.users_home") %></h2>
+
+        <% if @users.empty? %>
+        <p class="lead">
+          <%= t("home.no_people") %>
+        </p>
+        <% else %>
+        <% @users.each do |user| %>
+        <div class="col-md-1 cols-xs-2 friend">
+          <div class="data">
+            <div class="avatar">
+              <img src="<%= user.facebook_image_uri %>">
+            </div>
+          </div>
+          <% end %>
+          <% end %>
+      </div>
     </div>
   </div>
 </div>
-<% end %>
+<%end%>

@@ -46,3 +46,7 @@ en:
     last_10_people: "Last 12 people to have their egos massaged"
     no_people: "More like no people, yo."
     take_me_to_the_details: "Ok, I'm tired of all this cute crap. Take me to a list!"
+
+  home:
+    users_home: "Last 20 people who joinned us!"
+    no_people: "No people, yet."
