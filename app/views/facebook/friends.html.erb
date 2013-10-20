@@ -43,4 +43,12 @@
       scheduledFetchId = Filter.scheduleFiltering(form, currentVal);
     }
   });
+
+  $(document).ready(function() {
+    $(".friends").infinitescroll({
+      navSelector: "nav.pagination",
+      nextSelector: "nav.pagination a[rel=next]",
+      itemSelector: ".friends .friend"
+    });
+  });
 </script>

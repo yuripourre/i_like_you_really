@@ -107,6 +107,9 @@ GEM
     json (1.8.1)
     jwt (0.1.8)
       multi_json (>= 1.5)
+    kaminari (0.14.1)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     koala (1.7.0rc1)
       addressable
       faraday
@@ -276,6 +279,7 @@ DEPENDENCIES
   guard-rspec
   jbuilder (~> 1.2)
   jquery-rails
+  kaminari
   koala (~> 1.7.0rc1)
   mocha
   omniauth
