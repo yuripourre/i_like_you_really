@@ -1,0 +1,3 @@
+<% friends.each_with_index do |friend, current| %>
+  <%= render partial: "friend", object: friend, locals: { current: current} %>    
+<% end %>

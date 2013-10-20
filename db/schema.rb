@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131019174102) do
+ActiveRecord::Schema.define(version: 20131019234759) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "pg_trgm"
 
   create_table "activities", force: true do |t|
     t.integer  "user_id"
@@ -39,6 +40,8 @@ ActiveRecord::Schema.define(version: 20131019174102) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "facebook_users", ["name"], name: "facebook_users_name_idx", using: :gist
 
   create_table "friends", force: true do |t|
     t.integer  "user_id"

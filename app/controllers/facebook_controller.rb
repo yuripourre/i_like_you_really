@@ -1,8 +1,22 @@
 class FacebookController < ApplicationController
 
   def friends
-    @friends = FacebookFriends.new(current_user).update_graph.relationships.includes(:facebook_user).order("facebook_users.name").map do |f|
-      RelationshipDecorator.new(f)
+    raw_friends = FacebookFriends.new(current_user).update_graph
+      .relationships
+      .joins(:facebook_user)
+      .order("facebook_users.name")
+
+    unless params[:filter].blank?
+      raw_friends = raw_friends.fuzzy_search(facebook_users: {
+                                               name: params[:filter]
+                                             })
+    end
+
+    @friends = raw_friends.map { |f| RelationshipDecorator.new(f) }
+
+    respond_to do |format|
+      format.html
+      format.js
     end
   end
 

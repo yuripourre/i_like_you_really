@@ -1,12 +1,46 @@
-<div class="container friends">
+<div class="container">
   <div class="page-header">
     <h1>Friends</h1>  
   </div>
-  <%= form_tag(add_friends_facebook_index_path) do %>
-  <div class="row">
-    <% @friends.each_with_index do |friend, current| %>
-      <%= render partial: "friend", object: friend, locals: { current: current} %>    
-    <% end %>
+
+  <%= form_tag friends_facebook_index_path, class: "filtering", remote: true, method: :get do %>
+    <label for="filter">
+      <%= t("filter.label") %>
+    </label>
+    <%= text_field_tag :filter, params[:filter], class: "form-control", placeholder: t("filter.placeholder") %>
+  <% end %>
+  
+  <div class="row friends">
+    <%= render partial: "friends", object: @friends %>
   </div>
- <% end %>
 </div>
+
+<script type="text/javascript">
+  var scheduledFetchId,
+      form = $("form.filtering");
+
+  function startSearch() {
+    $(".friends").spin();
+  }
+  
+  function endSearch() {
+    $(".friends").spin(false);
+  }
+
+  form.on("ajax:before", startSearch);
+  form.on("ajax:complete", endSearch);
+  
+  $("input[name='filter']").on("keyup", function() {
+    var currentVal = $(this).val(),
+        form = $(this).parents("form");
+
+    if (currentVal.length == 0 || currentVal.length >= 3) {
+      if (scheduledFetchId) {
+        clearTimeout(scheduledFetchId);
+        scheduledFetchId = null;
+      }
+
+      scheduledFetchId = Filter.scheduleFiltering(form, currentVal);
+    }
+  });
+</script>
