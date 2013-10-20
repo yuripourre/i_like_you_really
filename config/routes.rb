@@ -24,5 +24,4 @@ ILikeYouReally::Application.routes.draw do
       get :index
     end
   end
-
 end
