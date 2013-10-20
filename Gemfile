@@ -17,7 +17,7 @@ gem 'omniauth-facebook'
 gem 'mocha', require: false
 gem 'koala', '~> 1.7.0rc1'
 gem 'puma'
-gem 'sidekiq'
+gem 'sidekiq', git: 'git@github.com:mperham/sidekiq.git'
 gem 'whenever', require: false
 gem 'choices'
 gem 'anjlab-bootstrap-rails', '~> 3.0.0.0', :require => 'bootstrap-rails'
