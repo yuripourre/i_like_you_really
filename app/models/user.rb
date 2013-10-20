@@ -38,6 +38,10 @@ class User < ActiveRecord::Base
     relationships.maximum(:updated_at) || 25.hours.ago
   end
 
+  def has_taken_notice_of_post?(post_id)
+    activities.where(object_id: post_id).any?
+  end
+
   class << self
 
     def find_for_facebook_oauth(auth, signed_in_resource = nil)
