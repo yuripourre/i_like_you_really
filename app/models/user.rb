@@ -26,8 +26,8 @@ class User < ActiveRecord::Base
     relationships.where("comment = true OR \"like\" = true").pluck(:facebook_user_id)
   end
 
-  def with_friend(friend_facebook_id)
-    relationships.where(facebook_user_id: friend_facebook_id).first
+  def fetch_friend(friend_facebook_id)
+    relationships.where(facebook_user_id: String(friend_facebook_id)).first
   end
 
   def still_needs_help_for(wizard_name)
