@@ -66,6 +66,7 @@ GEM
     coffee-script-source (1.6.3)
     columnize (0.3.6)
     connection_pool (1.1.0)
+    dalli (2.6.4)
     debugger (1.6.2)
       columnize (>= 0.3.1)
       debugger-linecache (~> 1.2.0)
@@ -116,6 +117,10 @@ GEM
       addressable
       faraday
       multi_json
+    launchy (2.3.0)
+      addressable (~> 2.3)
+    letter_opener (1.1.2)
+      launchy (~> 2.2)
     libv8 (3.16.14.3)
     listen (2.1.1)
       celluloid (>= 0.15.2)
@@ -137,6 +142,7 @@ GEM
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
     net-ssh (2.7.0)
+    newrelic_rpm (3.6.8.168)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
     oauth2 (0.8.1)
@@ -293,6 +299,7 @@ DEPENDENCIES
   capybara
   choices
   coffee-rails (~> 4.0.0)
+  dalli
   debugger
   devise
   font-awesome-rails
@@ -301,7 +308,9 @@ DEPENDENCIES
   jquery-rails
   kaminari
   koala (~> 1.7.0rc1)
+  letter_opener
   mocha
+  newrelic_rpm
   omniauth
   omniauth-facebook
   pg

@@ -1,12 +1,6 @@
-class RelationshipDecorator
-
-  attr_reader :relationship
-  def initialize(relationship)
-    @relationship= relationship
-  end
-
+class RelationshipDecorator < SimpleDelegator
   def name
-    @relationship.facebook_user.name
+    facebook_user.name
   end
 
   def image
@@ -14,16 +8,11 @@ class RelationshipDecorator
   end
 
   def facebook_id
-    @relationship.facebook_user_id
-
+    facebook_user_id
   end
 
-  def like
-    @relationship.like
-  end
-
-  def comment
-    @relationship.comment
+  def friend
+    facebook_user
   end
 
   def like_class
@@ -33,5 +22,4 @@ class RelationshipDecorator
   def comment_class
     comment ? "icon-comments" : "icon-comments-alt"
   end
-
 end

@@ -29,6 +29,10 @@ class User < ActiveRecord::Base
     relationships.where(facebook_user_id: friend_facebook_id).first
   end
 
+  def must_setup?
+    relationships.empty?
+  end
+
   class << self
 
     def find_for_facebook_oauth(auth, signed_in_resource = nil)

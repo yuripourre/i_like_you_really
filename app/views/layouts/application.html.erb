@@ -17,9 +17,9 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">
+      <%= link_to friends_facebook_index_path, class: "navbar-brand" do %>
         <i class="icon-thumbs-up-alt"></i> I Like You, Really
-      </a>
+      <% end %>
     </div>
 
     <div class="collapse navbar-collapse navbar-ex1-collapse">
@@ -31,6 +31,7 @@
           </a>
           <ul class="dropdown-menu">
             <li><a href="#">Dashboard</a></li>
+            <li><%= link_to "Comments", comments_path %></li>
             <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
           </ul>          
         </li>

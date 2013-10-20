@@ -27,7 +27,8 @@ class CommentsController < ApplicationController
   end
 
   def update
-    if @comment.update(params[:comment])
+    @comment = current_user.comments.find(params[:id])
+    if @comment.update(comment_params)
       redirect_to comment_path(@comment), notice: "Updated!"
     else
       render "edit"

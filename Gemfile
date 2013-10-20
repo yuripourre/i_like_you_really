@@ -26,6 +26,8 @@ gem 'spinjs-rails'
 gem 'font-awesome-rails'
 gem 'textacular', '~> 3.0'
 gem 'kaminari'
+gem 'dalli'
+gem 'newrelic_rpm'
 
 group :development do
   gem 'guard-rspec', require: false
@@ -33,6 +35,7 @@ group :development do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'pry'
+  gem "letter_opener"
 end
 
 group :development, :test do
