@@ -1,5 +1,5 @@
-interval = Rails.configuration.preferences.worker_interval
+set :environment, "development"
 
-every.interval.minutes do
-  runner LikeCommentWorker.perform_async(current_user, interval)
+every 3.minutes do
+  runner "MainWorker.perform_async", :output => {:error => 'error.log', :standard => 'cron.log'}
 end
