@@ -1,2 +1,0 @@
-2013-10-20T15:52:04Z 22775 TID-owqi3o7h4 INFO: Sidekiq client using redis://10.11.12.13:6379 with options {:namespace=>"ilikeyoureally"}
-2013-10-20T15:53:05Z 22807 TID-owy0078ic INFO: Sidekiq client using redis://10.11.12.13:6379 with options {:namespace=>"ilikeyoureally"}
