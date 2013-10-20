@@ -9,19 +9,21 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(comment_params)
+    @comment.user_id = current_user.id
+
     if @comment.save
-      redirect_to comment_path(@comment), notice: "Created!"
+      redirect_to comments_path, notice: "Created!"
     else
       render "new"
     end
   end
 
   def show
-    @comment = Comment.find(params[:id])
+    @comment = current_user.comments.find(params[:id])
   end
 
   def edit
-    @comment = Comment.find(params[:id])
+    @comment = current_user.comments.find(params[:id])
   end
 
   def update
@@ -33,7 +35,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
+    @comment = current_user.comments.find(params[:id])
     if @comment.destroy
       redirect_to comments_path, notice: "Removed!"
     else
