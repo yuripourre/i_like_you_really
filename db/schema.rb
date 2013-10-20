@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131020045830) do
+ActiveRecord::Schema.define(version: 20131020160829) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,15 @@ ActiveRecord::Schema.define(version: 20131020045830) do
   end
 
   add_index "facebook_users", ["name"], name: "facebook_users_name_idx", using: :gist
+
+  create_table "hidden_wizards", force: true do |t|
+    t.string   "wizard_name"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "hidden_wizards", ["user_id"], name: "index_hidden_wizards_on_user_id", using: :btree
 
   create_table "posts", force: true do |t|
     t.integer  "friend_id"

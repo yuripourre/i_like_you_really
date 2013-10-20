@@ -36,12 +36,19 @@ class FacebookFriends
     facebook_friends.select{|f| !@bd.include?(f['id']) }
   end
 
-  def update_graph
+  def update_graph(force = false)
+    return self if !force && updated_recently?
+
     mirror_additions
     mirror_removals
+
     self
   rescue
     self
+  end
+
+  def updated_recently?
+    user.latest_relationship_update > 24.hours.ago
   end
 
   def mirror_additions

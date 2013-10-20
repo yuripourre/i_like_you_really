@@ -1,0 +1,20 @@
+<div class="container wizard">
+  <div class="row">
+    <div class="grid-md-12 grid-xs-12">
+      <div class="">
+        <h2>What will this do?</h2>
+      </div>
+      
+      <p class="lead">
+        The concept is simple: you write a few very generic text options, and we'll sample from your when the time comes. Think of things that could fit most situations, like 'Wow!', or 'Great!', or ':)'. Emoticons are good for their multiple meanings, as they can be read ironically or earnestly.
+      </p>
+      <p class="lead">
+        If it seems like too much trouble, just skip this step and we won't comment on anything.
+      </p>
+
+      <div class="actions pull-right">
+        <%= link_to "Don't show this again", hide_wizard_path(wizard_name: "comments"), remote: true, method: :put %>
+      </div>
+    </div>
+  </div>
+</div>
