@@ -7,8 +7,8 @@ class LikeCommentWorker
       friends_ids = user.marked_friends_ids * ","
       random_comment = user.comments.first(offset:rand(user.comments.count))
       api = Facebook.new(user.access_token)
-      last_activity = user.activities.last
-      diff_time =  Time.now - last_activity.created_at
+      last_activity = user.activities.try(:last).try(:created_at) || 1.hour.ago
+      diff_time =  Time.now - last_activity
       result = api.wall_since(diff_time.to_i, friends_ids)
       posts = result
       posts.each {|post|
