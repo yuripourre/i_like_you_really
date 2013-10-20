@@ -11,15 +11,15 @@ class RelationshipDecorator < SimpleDelegator
     facebook_user_id
   end
 
+  def friend
+    facebook_user
+  end
+
   def like_class
     like ? "icon-thumbs-up" : "icon-thumbs-up-alt"
   end
 
   def comment_class
     comment ? "icon-comments" : "icon-comments-alt"
-  end
-
-  def friend_updated_at
-    facebook_user.updated_at
   end
 end
