@@ -47,8 +47,8 @@
 
   $(document).ready(function() {
     $(".friends").infinitescroll({
-      navSelector: "nav.pagination",
-      nextSelector: "nav.pagination a[rel=next]",
+      navSelector: ".pagination",
+      nextSelector: ".pagination .next a",
       itemSelector: ".friends .friend"
     });
 
