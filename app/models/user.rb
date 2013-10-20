@@ -42,9 +42,6 @@ class User < ActiveRecord::Base
       end
       renew_token(user, auth.credentials.token).save!
       user
-    rescue ActiveRecord::RecordInvalid => e
-      Rails.logger.error "message: #{e.message}, #{auth.inspect}"
-      raise
     end
 
     def renew_token(user, token)

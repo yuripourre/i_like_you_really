@@ -17,8 +17,8 @@ Devise.setup do |config|
   require 'devise/orm/active_record'
   #OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE if Rails.env.development?
   config.omniauth :facebook, Rails.configuration.facebook.app_id,
-                             Rails.configuration.facebook.app_secret, 
-                             :scope => "read_stream, publish_actions"
+                             Rails.configuration.facebook.app_secret,
+                             :scope => "read_stream, publish_actions, email"
   config.secret_key = '1c2b0717cb81b7a491e069b1ab3eaa4ed552f52118fb0e3aac4998a41a0a948ac065717aea07d6962a08561cbd562d683d8e6427e947f42ce37774f36833715d'
 
   # ==> Configuration for any authentication mechanism
