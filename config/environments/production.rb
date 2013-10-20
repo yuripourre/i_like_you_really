@@ -78,13 +78,14 @@ ILikeYouReally::Application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
-  ActionMailer::Base.smtp_settings = {
-    :user_name => Rails.configuration.sendgrid.email,
-    :password => Rails.configuration.sendgrid.password,
-    :domain => Rails.configuration.sendgrid.domain,
-    :address => 'smtp.sendgrid.net',
-    :port => 587,
-    :authentication => :plain,
-    :enable_starttls_auto => true
-  }
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.gmail.com',
+    port:                 587,
+    domain:               Rails.configuration.gmail.domain,
+    user_name:            Rails.configuration.gmail.email,
+    password:             Rails.configuration.gmail.password,
+    authentication:       'plain',
+    enable_starttls_auto: true  }
 end
