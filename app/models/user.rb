@@ -6,11 +6,23 @@ class User < ActiveRecord::Base
   # source: https://github.com/plataformatec/devise/wiki/OmniAuth:-Overview
   #
   # Tries to find an existing user by uid or create one with a random password otherwise.
-  has_many :friends
+  has_many :relationships, dependent: :destroy
+  has_many :friends, through: :relationships, source: :facebook_user
   has_many :comments
   has_many :activities
 
+  accepts_nested_attributes_for :relationships
+
   class << self
+
+    def with_friend(friend_facebook_id)
+      relationships.where(facebook_user_id: friend_facebook_id)
+    end
+
+    def marked_friends_ids
+      relationships.where("comment = true OR \"like\" = true").pluck(:facebook_user_id)
+    end
+
     def find_for_facebook_oauth(auth, signed_in_resource = nil)
       user = with_omniauth(auth.provider, auth.uid)
       unless user
@@ -27,11 +39,11 @@ class User < ActiveRecord::Base
     def renew_token(user, token)
       oauth = Facebook.oauth
       new_access_info = oauth.exchange_access_token_info(token)
-      user.access_token = new_access_info["access_token"] 
+      user.access_token = new_access_info["access_token"]
       user.access_token_expires_at = DateTime.now + new_access_info["expires"].to_i.seconds
       user
     end
-    
+
     def with_omniauth(provider, uid)
       where(provider: provider, uid: uid).first
     end

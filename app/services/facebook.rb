@@ -29,12 +29,12 @@ class Facebook
   end
 
   def wall
-    @graph.get_connection("me", "home?limit=100")
+    @graph.get_connection("me", "home")
   end
 
-  def wall_since(since)
-    @graph.fql_query("SELECT post_id, actor_id, message FROM stream WHERE created_time > #{since} AND filter_key in" <<
-    "(SELECT filter_key FROM stream_filter WHERE uid=me())")
+  def wall_since(since, friends)
+    @graph.fql_query("SELECT post_id, actor_id, created_time FROM stream WHERE filter_key = 'nf'" << 
+    "AND is_hidden = 0 AND created_time > #{since} AND actor_id in (#{friends})")
   end
 
   def picture(id)

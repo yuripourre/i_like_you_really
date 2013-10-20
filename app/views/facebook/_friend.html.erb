@@ -7,14 +7,17 @@
 
   <div>
     <span class="name">
-      <%= friend['name'] %>
+      <%= friend_name friend %>
     </span>
   </div>
   
   <div class="actions">
-    <i class="icon-thumbs-up-alt check" data-checkbox="user[friends][<%= friend['id'] %>][like]"></i>
-    <%= check_box_tag "user[friends][#{friend['id']}][like]" %>
-    <i class="icon-comments-alt check" data-checkbox="user[friends][<%= friend['id'] %>][comment]"></i>
-    <%= check_box_tag "user[friends][#{friend['id']}][comment]" %>
+    <%= hidden_field_tag "user[relationships_attributes][#{current}][facebook_user_id]", friend['id'] %>
+    <%= link_to toggle_like_facebook_index_path(facebook_user_id: friend.facebook_id), class: "like", remote: true, method: :put do %>
+      <i class="icon-thumbs-up-alt check" data-checkbox="user[relationships_attributes][<%= current %>][like]"></i>
+    <% end %>
+    <%= link_to toggle_comment_facebook_index_path(facebook_user_id: friend.facebook_id), class: "comment", remote: true, method: :put do %>
+      <i class="icon-comments-alt check" data-checkbox="user[relationships_attributes][<%= current %>][comment]"></i>
+    <% end %>
   </div>
 </div>

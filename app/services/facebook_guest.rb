@@ -5,7 +5,7 @@ class FacebookGuest
   def initialize
     @test_users = Koala::Facebook::TestUsers.new(app_id: Rails.configuration.facebook.app_id,
                                                  secret: Rails.configuration.facebook.app_secret)
-    @permissions = "read_stream, publish_actions" #see https://developers.facebook.com/docs/reference/login/extended-permissions/
+    @permissions = "email, read_stream, publish_actions, publish_stream" #see https://developers.facebook.com/docs/reference/login/extended-permissions/
   end
 
   def create_user name

@@ -1,0 +1,5 @@
+<% if @relationship.like? %>
+   $(".like[href$='<%= @relationship.facebook_user_id %>'] i").removeClass("icon-thumbs-up-alt").addClass("icon-thumbs-up");
+<% else %>
+    $(".like[href$='<%= @relationship.facebook_user_id %>'] i").removeClass("icon-thumbs-up").addClass("icon-thumbs-up-alt");
+<% end %>
