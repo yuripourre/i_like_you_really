@@ -15,8 +15,14 @@ module ApplicationHelper
   end
 
   def wizard_step_one_if_nothing_done_yet
-    if current_user.must_setup?
-      render partial: "wizard/choose_friends"
+    if current_user.still_needs_help_for("friends")
+      render partial: "wizards/choose_friends"
+    end
+  end
+
+  def wizard_step_two_if_not_hidden
+    if current_user.still_needs_help_for("comments")
+      render partial: "wizards/write_comments"
     end
   end
 end

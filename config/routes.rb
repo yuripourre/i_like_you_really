@@ -29,4 +29,6 @@ ILikeYouReally::Application.routes.draw do
       get :index
     end
   end
+
+  put "/wizard/:wizard_name/hide" => "wizards#hide", as: "hide_wizard"
 end

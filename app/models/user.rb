@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :friends, through: :relationships, source: :facebook_user
   has_many :comments
   has_many :activities
+  has_many :hidden_wizards
 
   accepts_nested_attributes_for :relationships
 
@@ -29,8 +30,8 @@ class User < ActiveRecord::Base
     relationships.where(facebook_user_id: friend_facebook_id).first
   end
 
-  def must_setup?
-    relationships.empty?
+  def still_needs_help_for(wizard_name)
+    hidden_wizards.where(wizard_name: wizard_name).empty?
   end
 
   class << self
