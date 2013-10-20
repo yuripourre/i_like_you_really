@@ -14,7 +14,7 @@ module FacebookHelper
   end
 
   def cycle_stat_message
-    message = %w(making_happy ego_feeding manic_depression being_there).sample
+    message = t("user").keys.sample
     t("user.#{message}")
   end
 end
