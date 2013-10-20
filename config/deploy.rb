@@ -1,4 +1,17 @@
+require "sidekiq/capistrano"
+
 SSHKit.config.command_map[:rake] = "bundle exec rake"
+SSHKit.config.command_map[:sidekiq] = "bundle exec sidekiq"
+SSHKit.config.command_map[:sidekiq_ctl] = "bundle exec sidekiqctl"
+SSHKit.config.command_map[:whenever] = "bundle exec whenever"
+
+set :sidekiq_role, :sidekiq
+set :sidekiq_cmd, :sidekiq
+set :sidekiqctl_cmd, :sidekiq_ctl
+set :sidekiq_timeout, 10
+set :sidekiq_pid, "tmp/pids/sidekiq.pid"
+set :sidekiq_options, "-e #{fetch(:rails_env, 'production')} -L /webapps/ilikeyoureally/current/log/sidekiq.log"
+set :sidekiq_processes, 1
 
 set :application, 'i_like_you_really'
 set :repo_url, 'git@github.com:railsrumble/r13-team-421.git'
@@ -21,15 +34,6 @@ namespace :deploy do
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
       execute "kill -s USR2 `cat /tmp/puma_ilikeyoureally.pid`"
-    end
-  end
-
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-      # Here we can do anything such as:
-      # within release_path do
-      #   execute :rake, 'cache:clear'
-      # end
     end
   end
 

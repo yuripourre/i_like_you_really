@@ -31,8 +31,8 @@ class User < ActiveRecord::Base
     relationships.where("comment = true OR \"like\" = true").pluck(:facebook_user_id)
   end
 
-  def with_friend(friend_facebook_id)
-    relationships.where(facebook_user_id: friend_facebook_id).first
+  def fetch_friend(friend_facebook_id)
+    relationships.where(facebook_user_id: String(friend_facebook_id)).first
   end
 
   def still_needs_help_for(wizard_name)
@@ -41,6 +41,10 @@ class User < ActiveRecord::Base
 
   def latest_relationship_update
     relationships.maximum(:updated_at) || 25.hours.ago
+  end
+
+  def has_taken_notice_of_post?(post_id)
+    activities.where(object_id: post_id).any?
   end
 
   class << self

@@ -1,13 +1,10 @@
 <%= help_message_for "comments" %>
 
 <div class="container">
-  <div class="page-header">
-    <h1>Comments</h1>
-  </div>
-
-<table class="table table-bordered">
+ <br/>
+<table class="table">
   <tr>
-    <td>Text</td>
+    <td>Comment</td>
     <td></td>
   </tr>
   <% @comments.each do |comment| %>
@@ -22,6 +19,6 @@
   <% end %>
 </table>
 
-<%= link_to "New", new_comment_path, class: "btn btn-primary"%>
+<%= link_to "New Comment", new_comment_path, class: "btn btn-primary btn-lg"%>
 <%= link_to "Dashboard", dashboards_path%>
 </div>
