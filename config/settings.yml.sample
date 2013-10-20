@@ -10,6 +10,10 @@ defaults: &defaults
     host: "redis://10.11.12.13:6379"
     namespace: "ilikeyoureally"
   memcached_host: "10.11.12.13"
+  sendgrid:
+    email: "email@example.com"
+    password: "12345"
+    domain: "domain.example.com"
 
 development:
   <<: *defaults

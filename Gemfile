@@ -34,6 +34,7 @@ group :development do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'pry'
+  gem "letter_opener"
 end
 
 group :development, :test do
