@@ -36,6 +36,8 @@ class LikeCommentWorker
             end
             if send_to_stream
               activity.object_id = post["post_id"]
+
+              activity.friend_id = post["actor_id"].to_s
               activity.user = user
               activity.save!
             end
