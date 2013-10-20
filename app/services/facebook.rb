@@ -22,10 +22,14 @@ class Facebook
 
   def like(id)
     @graph.put_like(id)
+  rescue Koala::Facebook::ServerError
+    true
   end
 
   def comment(id, message)
     @graph.put_comment(id, message)
+  rescue Koala::Facebook::ServerError
+    true
   end
 
   def wall
@@ -33,7 +37,7 @@ class Facebook
   end
 
   def wall_since(since, friends)
-    @graph.fql_query("SELECT post_id, actor_id, created_time FROM stream WHERE filter_key = 'nf'" << 
+    @graph.fql_query("SELECT post_id, actor_id, created_time FROM stream WHERE filter_key = 'nf'" <<
     "AND is_hidden = 0 AND created_time > #{since} AND actor_id in (#{friends})")
   end
 
