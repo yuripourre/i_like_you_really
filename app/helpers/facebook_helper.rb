@@ -12,4 +12,9 @@ module FacebookHelper
 
     "#{first} #{middle_initials} #{last}"
   end
+
+  def cycle_stat_message
+    message = %w(making_happy ego_feeding manic_depression being_there).sample
+    t("user.#{message}")
+  end
 end

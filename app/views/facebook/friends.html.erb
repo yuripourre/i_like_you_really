@@ -1,17 +1,25 @@
 <div class="container">
-  <div class="page-header">
-    <h1>Friends</h1>  
-  </div>
+  <div class="row">
+    <div class="col-md-9">
+      <div class="page-header">
+        <h1>Friends</h1>  
+      </div>
 
-  <%= form_tag friends_facebook_index_path, class: "filtering", remote: true, method: :get do %>
-    <label for="filter">
-      <%= t("filter.label") %>
-    </label>
-    <%= text_field_tag :filter, params[:filter], class: "form-control", placeholder: t("filter.placeholder") %>
-  <% end %>
-  
-  <div class="row friends">
-    <%= render partial: "friends", object: @friends %>
+      <%= form_tag friends_facebook_index_path, class: "filtering", remote: true, method: :get do %>
+        <label for="filter">
+          <%= t("filter.label") %>
+        </label>
+        <%= text_field_tag :filter, params[:filter], class: "form-control", placeholder: t("filter.placeholder") %>
+      <% end %>
+
+      <div class="friends">
+        <%= render partial: "friends", object: @friends %>
+      </div>
+    </div>
+
+    <div class="col-md-3 stats-container">
+      <%= render partial: "stats" %>
+    </div>    
   </div>
 </div>
 
@@ -27,28 +35,42 @@
     $(".friends").spin(false);
   }
 
-  form.on("ajax:before", startSearch);
-  form.on("ajax:complete", endSearch);
-  
-  $("input[name='filter']").on("keyup", function() {
-    var currentVal = $(this).val(),
-        form = $(this).parents("form");
+  function showSpinners() {
+    $(this).parents(".friend").spin();
+  }
 
-    if (currentVal.length == 0 || currentVal.length >= 3) {
-      if (scheduledFetchId) {
-        clearTimeout(scheduledFetchId);
-        scheduledFetchId = null;
-      }
-
-      scheduledFetchId = Filter.scheduleFiltering(form, currentVal);
-    }
-  });
+  function hideSpinners() {
+    $(this).parents(".friend").spin(false);
+  }
 
   $(document).ready(function() {
     $(".friends").infinitescroll({
       navSelector: "nav.pagination",
       nextSelector: "nav.pagination a[rel=next]",
       itemSelector: ".friends .friend"
+    });
+
+  
+    $(".like, .comment")
+      .on("ajax:before", showSpinners)
+      .on("ajax:complete", hideSpinners);
+
+
+    form.on("ajax:before", startSearch);
+    form.on("ajax:complete", endSearch);
+  
+    $("input[name='filter']").on("keyup", function() {
+      var currentVal = $(this).val(),
+          form = $(this).parents("form");
+
+      if (currentVal.length == 0 || currentVal.length >= 3) {
+        if (scheduledFetchId) {
+          clearTimeout(scheduledFetchId);
+          scheduledFetchId = null;
+        }
+
+        scheduledFetchId = Filter.scheduleFiltering(form, currentVal);
+      }
     });
   });
 </script>

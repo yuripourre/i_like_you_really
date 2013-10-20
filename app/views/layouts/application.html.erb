@@ -25,6 +25,8 @@
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav navbar-right">
         <li>
+          <%= current_user.name %>
+          <%= image_tag current_user.facebook_image_uri, class: "user-avatar" %>
         </li>
       </ul>
     </div>

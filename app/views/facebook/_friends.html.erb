@@ -2,4 +2,4 @@
   <%= render partial: "friend", object: friend, locals: { current: current} %>    
 <% end %>
 
-<%= paginate @raw_friends %>
+<%= paginate @raw_friends, filter: params[:filter] %>

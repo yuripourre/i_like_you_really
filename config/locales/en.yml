@@ -23,3 +23,9 @@ en:
   filter:
     label: "Type in a friend's name (or a part of it) to filter. It takes a minimum of 3 characters to start searching. If you clear the field, the list will be reset."
     placeholder: "Someone you want to make happier"
+
+  user:
+    making_happy: "Bringing joy to %s %s"
+    ego_feeding: "Ego-feeding %s %s"
+    manic_depression: "Saving %s %s from manic depression"
+    being_there: "Being there for %s %s"

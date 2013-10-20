@@ -3,3 +3,5 @@
 <% else %>
     $(".like[href$='<%= @relationship.facebook_user_id %>'] i").removeClass("icon-thumbs-up").addClass("icon-thumbs-up-alt");
 <% end %>
+
+$(".stats-container").html("<%= j(render(partial: "stats")) %>");
