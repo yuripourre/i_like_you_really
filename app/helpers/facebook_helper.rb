@@ -1,7 +1,7 @@
 module FacebookHelper
   PREPOSITIONS = %w(of van von de da do)
   def friend_name(friend)
-    first, *middle, last = friend["name"].split
+    first, *middle, last = friend.name.split
     middle_initials = middle.map { |name|
       if PREPOSITIONS.member?(name.downcase)
         name
