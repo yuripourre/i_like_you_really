@@ -25,6 +25,7 @@ gem 'spinjs-rails'
 gem 'font-awesome-rails'
 gem 'textacular', '~> 3.0'
 gem 'kaminari'
+gem 'dalli'
 gem 'newrelic_rpm'
 
 group :development do
