@@ -13,4 +13,10 @@ module ApplicationHelper
 
     "stats-#{latest_update.to_i}"
   end
+
+  def wizard_step_one_if_nothing_done_yet
+    if current_user.must_setup?
+      render partial: "wizard/choose_friends"
+    end
+  end
 end
