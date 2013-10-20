@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
   end
 
   def latest_relationship_update
-    relationships.maximum(:updated_at)
+    relationships.maximum(:updated_at) || 25.hours.ago
   end
 
   class << self
