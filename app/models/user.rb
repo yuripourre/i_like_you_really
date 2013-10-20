@@ -54,16 +54,22 @@ class User < ActiveRecord::Base
 
   class << self
 
-    def find_for_facebook_oauth(auth, signed_in_resource = nil)
+    def find_for_facebook_oauth(auth, signed_in_resource = nil, &new_user_action)
       user = with_omniauth(auth.provider, auth.uid)
+      should_call_new_user_action = false
+
       unless user
         user = User.new(name: auth.extra.raw_info.name,
                         provider: auth.provider,
                         uid: auth.uid,
                         email: auth.info.email,
                         password: Devise.friendly_token[0,20])
+
+        should_call_new_user_action = true
       end
       renew_token(user, auth.credentials.token).save!
+      new_user_action.call(user) if should_call_new_user_action
+
       user
     end
 
