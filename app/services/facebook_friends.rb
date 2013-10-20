@@ -36,8 +36,8 @@ class FacebookFriends
     facebook_friends.select{|f| !@bd.include?(f['id']) }
   end
 
-  def update_graph
-    return self if updated_recently?
+  def update_graph(force = false)
+    return self if !force && updated_recently?
 
     mirror_additions
     mirror_removals
