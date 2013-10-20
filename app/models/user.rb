@@ -47,6 +47,11 @@ class User < ActiveRecord::Base
     activities.where(object_id: post_id).any?
   end
 
+  def friends_recently_interacted_with
+    relationships.select("DISTINCT facebook_user_id").
+      where("facebook_user_id IN (SELECT friend_id FROM activities ORDER by updated_at DESC)")
+  end
+
   class << self
 
     def find_for_facebook_oauth(auth, signed_in_resource = nil)
