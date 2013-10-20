@@ -11,7 +11,7 @@ ILikeYouReally::Application.routes.draw do
 
   resources :facebook do
     collection do
-      get :friends
+      get :friends, path: "/choose/friends"
       post :add_friends
       put :toggle_like
       put :toggle_comment

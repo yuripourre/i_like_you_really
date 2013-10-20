@@ -30,8 +30,9 @@
             <%= image_tag current_user.facebook_image_uri, class: "user-avatar" %>
           </a>
           <ul class="dropdown-menu">
-            <li><%= link_to "Dashboard", dashboards_path %></li>
-            <li><%= link_to "Comments", comments_path %></li>
+            <li><%= link_to t("menu.dashboard"), dashboards_path %></li>
+            <li><%= link_to t("menu.friends"), friends_facebook_index_path %></li>
+            <li><%= link_to t("menu.comments"), comments_path %></li>
             <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
           </ul>          
         </li>
