@@ -1,0 +1,16 @@
+<html>
+  <head>
+  </head>
+  <body>
+    <div class="container dashboard">
+      <%- @activities.each do |activity| %>
+        <div>
+          <%= activity.category %>
+        </div>
+        <div>
+          <%= activity.friend_id %>
+        </div>
+      <%- end %>
+    </div>
+  </body>
+</html>

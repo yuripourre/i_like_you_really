@@ -26,4 +26,10 @@ ILikeYouReally::Application.routes.draw do
     end
   end
 
+  resources :dashboard do
+    collection do
+      get :index
+    end
+  end
+
 end
