@@ -1,7 +1,9 @@
 class FacebookController < ApplicationController
 
   def friends
-    @friends = FacebookFriends.new(current_user).update_graph.friends
+    @friends = FacebookFriends.new(current_user).update_graph.relationships.includes(:facebook_user).order("facebook_users.name").map do |f|
+      RelationshipDecorator.new(f)
+    end
   end
 
   def add_friends

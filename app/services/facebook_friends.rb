@@ -14,6 +14,10 @@ class FacebookFriends
     user.friends
   end
 
+  def relationships
+    user.relationships
+  end
+
   def create_friend(friend)
     FacebookUser.where(friend).first_or_create
   end
@@ -33,6 +37,8 @@ class FacebookFriends
       create_relationship(f["id"])
     end
     remove_friends
+    self
+  rescue
     self
   end
 
