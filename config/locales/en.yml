@@ -21,5 +21,5 @@
 
 en:
   filter:
-    label: "Type in a friend's name (or a part of it) to filter. It takes a minimum of 3 characters to start searching. If you clear the field, the list will reset."
+    label: "Type in a friend's name (or a part of it) to filter. It takes a minimum of 3 characters to start searching. If you clear the field, the list will be reset."
     placeholder: "Someone you want to make happier"
