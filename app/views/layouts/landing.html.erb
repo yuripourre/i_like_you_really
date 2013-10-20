@@ -24,13 +24,13 @@
       <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <%= link_to 'facebook_guest_friends_path' do %>
-              <button class="btn btn-guest"> Login as Guest </button>
+            <%= link_to user_omniauth_authorize_path(:facebook) do %>
+              <button class="btn btn-facebook"><i class="icon-facebook"></i> | Connect with Facebook</button>
             <% end %>
           </li>
           <li>
-            <%= link_to user_omniauth_authorize_path(:facebook) do %>
-              <button class="btn btn-facebook"><i class="icon-facebook"></i> | Connect with Facebook</button>
+            <%= link_to friends_facebook_guest_index_path do %>
+              <button class="btn btn-pinterest">Login as Guest</button>
             <% end %>
           </li>
         </ul>
