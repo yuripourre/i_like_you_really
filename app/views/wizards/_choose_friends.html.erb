@@ -14,7 +14,7 @@
       </p>
       
       <div class="actions pull-right">
-        <%= link_to "Don't show this again", hide_wizard_path(id: "friends"), remote: true, method: :put %>
+        <%= link_to "Don't show this again", hide_wizard_path(wizard_name: "friends"), remote: true, method: :put %>
         
         <%= link_to comments_path do %>
           <button class="btn btn-primary">
