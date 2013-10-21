@@ -61,7 +61,7 @@ class Interactor
 
   def maybe_like(post_id)
     will_like = feels_interactive?
-    api.like(object_id) if will_like
+    api.like(post_id) if will_like
 
     will_like
   rescue Koala::Facebook::ClientError
