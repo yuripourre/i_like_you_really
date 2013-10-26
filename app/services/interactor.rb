@@ -1,10 +1,11 @@
 class Interactor
-  attr_reader   :api, :user
-  private       :api, :user
+  attr_reader   :api, :user, :logger
+  private       :api, :user, :logger
 
-  def initialize(facebook_api, user)
-    @api  = facebook_api
-    @user = user
+  def initialize(facebook_api, user, logger = Rails.logger)
+    @api    = facebook_api
+    @user   = user
+    @logger = logger
   end
 
   def interact_with_latest_posts_from_friends
@@ -20,7 +21,7 @@ class Interactor
 
     yield api.wall_since(timespan, friends_ids)
   rescue Koala::Facebook::ClientError => e
-    []
+    logger.error "Loading Facebook posts for User\##{user.id} failed: #{e.message}"
   end
 
   def interact_with(post)
@@ -55,7 +56,8 @@ class Interactor
     end
 
     will_comment
-  rescue Koala::Facebook::ClientError
+  rescue Koala::Facebook::ClientError => e
+    logger.error "Commenting Facebook post:#{post_id} for User\##{user.id} failed: #{e.message}"
     false
   end
 
@@ -65,6 +67,7 @@ class Interactor
 
     will_like
   rescue Koala::Facebook::ClientError
+    logger.error "Liking Facebook post:#{post_id} for User\##{user.id} failed: #{e.message}"
     false
   end
 
