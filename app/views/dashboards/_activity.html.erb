@@ -1,0 +1,35 @@
+<div class="col-md-3">
+  <div class="activity">
+    <div class="avatar">
+      <%= image_tag facebook_image_uri(activity.friend_id, 60, 60) %>      
+    </div>
+
+    <div class="content">
+      <div class="title blue">
+        Who
+      </div>
+      <div class="friend-name">
+        <%= friend_name activity.friend %>
+      </div>
+      <div class="title blue">
+        When
+      </div>
+      <div class="activity-creation">
+        <%= activity.created_at.strftime("%m/%d/%Y - %H:%M:%S") %>
+      </div>
+      <div class="title blue">
+        What
+      </div>
+      <div class="activity-post">
+        <%= link_to "See on Facebook", "https://www.facebook.com/"+activity.object_id.gsub("_","/posts/") %>
+      </div>
+      <div class="title blue">
+        Actions
+      </div>
+      <div class="activity-actions">
+        <i class="<%= css_class_for_like(activity) %>"></i>
+        <i class="<%= css_class_for_comment(activity) %>"></i>
+      </div>
+    </div>
+  </div>
+</div>

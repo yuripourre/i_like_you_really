@@ -190,6 +190,54 @@ body.logged-in {
         }
     }
 
+    .activity {
+        height: 200px;
+        box-shadow: 1px 1px 1px #e7e7e7;
+        -webkit-box-shadow: 1px 1px 1px #e7e7e7;
+        background-clip: padding-box;
+        -webkit-background-clip: padding-box;
+        background: #fafafa;
+        margin-bottom: 20px;
+
+        .content {
+            position: relative;
+            margin-left: 75px;
+            padding-top: 10px;
+            
+            .friend-name {
+                font-weight: 400;
+            }
+
+            .title {
+                font-size: 0.8em;
+
+                &.blue {
+                    color: #6bb5c1;
+                }
+            }
+
+            .activity-actions {
+                font-size: 3em;
+                color: darken(#eee, 10);
+
+                .done {
+                    color: #7ac17d;
+                }
+            }
+        }
+
+        .avatar {
+            float: left;
+            img {
+                -webkit-border-radius: 3px;
+                border-radius: 3px;
+                margin-top: 10px;
+                width: 60px;
+                height: 60px;
+            }
+        }
+    }
+
     .stats {
         .you {
             width: 100%;

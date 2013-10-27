@@ -14,9 +14,8 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :relationships
 
-
   def image
-    "https://graph.facebook.com/#{self.uid}/picture?width=80&height=80"
+    "#{facebook_image_uri}?width=80&height=80"
   end
 
   def facebook_image_uri

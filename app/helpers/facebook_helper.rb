@@ -17,4 +17,8 @@ module FacebookHelper
     message = t("user").keys.sample
     t("user.#{message}")
   end
+
+  def facebook_image_uri(uid, width = 80, height = 80)
+    "https://graph.facebook.com/#{uid}/picture?width=#{width}&height=#{height}"
+  end
 end

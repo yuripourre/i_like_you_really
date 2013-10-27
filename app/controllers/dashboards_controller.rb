@@ -1,4 +1,6 @@
 class DashboardsController < ApplicationController
+  helper FacebookHelper
+
   def index
     @comment_count = current_user.activities.comments.count
     @like_count    = current_user.activities.likes.count
@@ -8,6 +10,6 @@ class DashboardsController < ApplicationController
   end
 
   def details
-    @activities = current_user.activities.page(params[:page]).per(50)
+    @activities = current_user.activities.order("created_at DESC").page(params[:page]).per(48)
   end
 end
