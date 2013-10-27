@@ -1,15 +1,21 @@
 <%= cache(relationship) do %>
 <div class="col-md-3 cols-xs-4 friend">
-  <%= render partial: "friend", locals: { relationship: relationship } %>
-  
-  <div class="actions">
-    <%= hidden_field_tag "user[relationships_attributes][#{current}][facebook_user_id]", relationship.facebook_id  %>
-    <%= link_to toggle_like_facebook_index_path(facebook_user_id: relationship.facebook_id), class: "like", remote: true, method: :put do %>
+  <div class="background" style="background: url(<%= relationship.image(200, 200) %>); background-size: 100% auto;">
+  </div>
+  <div class="foreground">
+    <div class="actions">
+      <%= hidden_field_tag "user[relationships_attributes][#{current}][facebook_user_id]", relationship.facebook_id  %>
+      <%= link_to toggle_like_facebook_index_path(facebook_user_id: relationship.facebook_id), class: "like", remote: true, method: :put do %>
       <i class="<%= relationship.like_class %> check" data-checkbox="user[relationships_attributes][<%= current %>][like]"></i>
-    <% end %>
-    <%= link_to toggle_comment_facebook_index_path(facebook_user_id: relationship.facebook_id), class: "comment", remote: true, method: :put do %>
+      <% end %>
+      <%= link_to toggle_comment_facebook_index_path(facebook_user_id: relationship.facebook_id), class: "comment", remote: true, method: :put do %>
       <i class="<%= relationship.comment_class %> check" data-checkbox="user[relationships_attributes][<%= current %>][comment]"></i>
-    <% end %>
+      <% end %>
+    </div>
+
+    <div class="friend-name">
+      <a href="https://www.facebook.com/<%= relationship.facebook_id %>" target= "_blank"><%= friend_name relationship %></a>
+    </div>      
   </div>
 </div>
 <% end %>

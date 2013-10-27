@@ -3,8 +3,8 @@ class RelationshipDecorator < SimpleDelegator
     facebook_user.name
   end
 
-  def image
-    "https://graph.facebook.com/#{self.facebook_id}/picture?width=80&height=80"
+  def image(width = 80, height = 80)
+    "https://graph.facebook.com/#{self.facebook_id}/picture?width=#{width}&height=#{height}"
   end
 
   def facebook_id

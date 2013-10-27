@@ -12,29 +12,37 @@
  *= require_tree .
  */
 
+$default-border-bottom: 1px solid rgba(49,78,95,0.12);
+$friend-box-hover-color: #7bdcf5;
+$number-color:  #ee6768;
+$darker-title: darken($friend-box-hover-color, 30);
+$navbar-height: 70px;
+$navbar-border-radius: 0;
+$navbar-default-bg: #fff;
+$navbar-default-link-color: darken($friend-box-hover-color, 30);
+$navbar-default-link-hover-color: $friend-box-hover-color;
+
 @import "twitter/bootstrap";
 @import "social_buttons";
 @import "font-awesome";
 @import "mobile";
 
-@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400);
-
-$navbar-height: 70px;
-$default-border-bottom: 1px solid rgba(49,78,95,0.12);
-$friend-box-hover-color: #7bdcf5;
-$number-color:  #ee6768;
-$darker-title: darken($friend-box-hover-color, 30);
+label {
+    font-weight: normal;
+}
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: "Source Sans Pro", "Helvetica Neue", sans;
+    font-family: "Helvetica Neue", "Helvetica", "Arial", sans;
+    font-weight: 100;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
 }
 
 body {
-    font-family: "Source Sans Pro", "Helvetica Neue", sans;
+    font-family: "Helvetica Neue", "Helvetica", "Arial", sans;
 
     @media all and (min-width: 641px) {
         .navbar {
-            min-height: $navbar-height;
             border-bottom: $default-border-bottom;
             
             li > .btn {
@@ -107,7 +115,28 @@ body.logged-in {
             width: 50px;
             height: 50px;
             border: solid 1px $friend-box-hover-color;
+            margin-right: 10px;
         }
+    }
+
+    .box {
+        box-shadow: 1px 1px 1px #e7e7e7;
+        -webkit-box-shadow: 1px 1px 1px #e7e7e7;
+        background-clip: padding-box;
+        -webkit-background-clip: padding-box;
+        background: #fafafa;
+
+        .avatar {
+            float: left;
+
+            img {
+                -webkit-border-radius: 3px;
+                border-radius: 3px;
+                margin-top: 10px;
+                width: 60px;
+                height: 60px;
+            }
+        }        
     }
 
     .wizard {
@@ -140,7 +169,6 @@ body.logged-in {
                     font-weight: 400;
                     color: $number-color;
                     font-size: 5em;
-                    font-family: "Helvetica Neue", "Source Sans Pro", "Arial", sans;
                 }
             }
         }
@@ -148,60 +176,99 @@ body.logged-in {
     
     .friends {
         margin-top: 20px;
+        border-radius: 3px;
+        -webkit-border-radius: 3px;
+        
         .friend {
+            width: 200px;
+            height: 200px;
+            background-size: 100% auto;
+            color: white;
+            text-shadow: 1px 1px 1px #000;
+            font-weight: 200;
+            text-transform: uppercase;
             float: left;
-            margin-bottom: 30px;
 
-            > * {
-                margin: 5px 5px;
+            .background {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 200px;
+                height: 200px;
             }
 
-            .data {
-                width: 80px;
-                height: 100%;
+            .foreground {
+                &:hover:before {
+                    content: ' ';
+                    position: absolute;
+                    left: 0;
+                    right: 0;
+                    top: 0;
+                    bottom: 0;
+                    background-color: $friend-box-hover-color;
+                    opacity: 0.5;
+                }
                 
-                .avatar {
-                    img {
-                        width: 100%;
-                        height: 80px;
-                    }
-                }                
-            }
-            
-            .name {
-                font-size: 0.9em;
-            }
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 200px;
+                height: 200px;                
+                z-index: 1;
 
-            .actions {
-                font-size: 3em;
-                
-                .check {
-                    color: $friend-box-hover-color;
+                a {
+                    color: white;
                     
                     &:hover {
-                        color: yellow;
+                        color: $friend-box-hover-color;
+                        text-decoration: none;
                     }
                 }
                 
-                input[type="checkbox"] {
-                    display: none;
+                > * {
+                    margin: 5px 5px;
                 }
+
+                .friend-name {
+                    position: absolute;
+                    bottom: 5px;
+                    font-weight: 100;
+                    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+                    font-size: 1.2em;
+                    letter-spacing: 0.05em;
+                    text-shadow: 1px 1px 5px #000;                
+                }
+
+                .actions {
+                    position: absolute;
+                    right: 5px;
+                    font-size: 2em;
+                    
+                    .check {
+                        &:hover {
+                            color: $friend-box-hover-color;
+                        }
+                    }
+                    
+                    input[type="checkbox"] {
+                        display: none;
+                    }
+                }                
             }
         }
     }
 
     .activity {
         height: 200px;
-        box-shadow: 1px 1px 1px #e7e7e7;
-        -webkit-box-shadow: 1px 1px 1px #e7e7e7;
-        background-clip: padding-box;
-        -webkit-background-clip: padding-box;
-        background: #fafafa;
         margin-bottom: 20px;
+
+        .avatar {
+            margin-left: 10px;
+        }
 
         .content {
             position: relative;
-            margin-left: 75px;
+            margin-left: 80px;
             padding-top: 10px;
             
             .friend-name {
@@ -223,17 +290,6 @@ body.logged-in {
                 .done {
                     color: #7ac17d;
                 }
-            }
-        }
-
-        .avatar {
-            float: left;
-            img {
-                -webkit-border-radius: 3px;
-                border-radius: 3px;
-                margin-top: 10px;
-                width: 60px;
-                height: 60px;
             }
         }
     }
