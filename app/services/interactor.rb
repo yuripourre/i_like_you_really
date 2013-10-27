@@ -66,7 +66,7 @@ class Interactor
     api.like(post_id) if will_like
 
     will_like
-  rescue Koala::Facebook::ClientError
+  rescue Koala::Facebook::ClientError => e
     logger.error "Liking Facebook post:#{post_id} for User\##{user.id} failed: #{e.message}"
     false
   end
