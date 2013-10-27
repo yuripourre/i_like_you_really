@@ -49,7 +49,9 @@
     $(".friends").infinitescroll({
       navSelector: ".pagination",
       nextSelector: ".pagination .next a",
-      itemSelector: ".friends .friend"
+      itemSelector: ".friends .friend",
+      msgText: "<em>Loading more of your beautiful friends...</em>",
+      finishedMessage: "<em>These are all you've got. Enjoy them.</em>"
     });
 
   
