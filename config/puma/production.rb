@@ -94,7 +94,7 @@ bind "unix://#{Dir.tmpdir}/puma_ilikeyoureally.sock"
 #
 # The default is “0”.
 #
-workers 4
+workers 2
 
 # Code to run when a worker boots to setup the process before booting
 # the app.
